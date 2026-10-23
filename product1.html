@@ -1,0 +1,1347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gaurav Rubber Products</title>
+  <style>
+    :root {
+      --bg: #f6f4ee;
+      --panel: #f2efe7;
+      --panel-strong: #ece4d3;
+      --card: #ffffff;
+      --text: #1a1f2b;
+      --muted: #5f6575;
+      --line: rgba(20, 28, 38, 0.09);
+      --brand: #d98a00;
+      --brand-dark: #b86d00;
+      --brand-soft: rgba(217, 138, 0, 0.12);
+      --shadow: 0 22px 50px rgba(20, 26, 36, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: linear-gradient(180deg, #f8f7f2 0%, #f2efe9 100%);
+      font-family: 'Inter', 'Segoe UI', sans-serif;
+      color: var(--text);
+      padding: 60px 20px;
+    }
+
+    .gr-product-section {
+      max-width: 1280px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .projects-showcase-section {
+      max-width: 1280px;
+      margin: 0 auto 80px;
+      padding: 16px 6px 0;
+    }
+
+    .projects-showcase-layout {
+      display: grid;
+      grid-template-columns: 0.9fr 1.5fr;
+      gap: 34px;
+      align-items: start;
+    }
+
+    .projects-intro {
+      position: sticky;
+      top: 20px;
+      padding-right: 10px;
+    }
+
+    .projects-intro h2 {
+      font-size: clamp(4rem, 5vw, 7rem);
+      line-height: 0.88;
+      letter-spacing: -0.08em;
+      font-weight: 300;
+      color: #1a2029;
+      margin: 0 0 26px;
+    }
+
+    .projects-intro h2 strong {
+      color: #1a2029;
+      font-weight: 300;
+      display: block;
+    }
+
+    .projects-intro .project-line {
+      display: block;
+      width: 160px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--brand), var(--brand-dark));
+      margin: 18px 0 22px;
+      border-radius: 999px;
+    }
+
+    .projects-intro p {
+      font-size: 17px;
+      line-height: 1.8;
+      color: var(--muted);
+      margin: 0 0 22px;
+    }
+
+    .projects-intro .view-all-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 220px;
+      padding: 15px 26px;
+      background: linear-gradient(135deg, var(--brand), var(--brand-dark));
+      color: #fff;
+      border-radius: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 16px 28px rgba(184, 109, 0, 0.18);
+    }
+
+    .projects-scroll-stack {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+      max-height: 980px;
+      overflow-y: auto;
+      padding-right: 10px;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(17, 24, 39, 0.35) transparent;
+    }
+
+    .projects-scroll-stack::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .projects-scroll-stack::-webkit-scrollbar-thumb {
+      background: rgba(17, 24, 39, 0.25);
+      border-radius: 999px;
+    }
+
+    .industries-showcase-section {
+      max-width: 1280px;
+      margin: 0 auto 80px;
+      padding: 16px 6px 0;
+    }
+
+    .industries-showcase-layout {
+      display: grid;
+      grid-template-columns: 0.9fr 1.5fr;
+      gap: 34px;
+      align-items: start;
+    }
+
+    .industries-intro {
+      position: sticky;
+      top: 20px;
+      padding-right: 10px;
+    }
+
+    .industries-intro .mini-label {
+      display: inline-block;
+      margin-bottom: 18px;
+      background: var(--brand-soft);
+      border: 1px solid rgba(184, 109, 0, 0.18);
+      color: var(--brand-dark);
+      border-radius: 999px;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 700;
+      padding: 8px 16px;
+    }
+
+    .industries-intro h2 {
+      font-size: clamp(3.5rem, 5vw, 6.5rem);
+      line-height: 0.88;
+      letter-spacing: -0.08em;
+      font-weight: 300;
+      color: #1a2029;
+      margin: 0 0 26px;
+    }
+
+    .industries-intro h2 strong {
+      color: #1a2029;
+      font-weight: 300;
+      display: block;
+    }
+
+    .industry-line {
+      display: block;
+      width: 160px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--brand), var(--brand-dark));
+      margin: 18px 0 22px;
+      border-radius: 999px;
+    }
+
+    .industries-intro p {
+      font-size: 17px;
+      line-height: 1.8;
+      color: var(--muted);
+      margin: 0 0 22px;
+    }
+
+    .industries-scroll-stack {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+      max-height: 980px;
+      overflow-y: auto;
+      padding-right: 10px;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(17, 24, 39, 0.35) transparent;
+    }
+
+    .industries-scroll-stack::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .industries-scroll-stack::-webkit-scrollbar-thumb {
+      background: rgba(17, 24, 39, 0.25);
+      border-radius: 999px;
+    }
+
+    .industry-card {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      min-height: 290px;
+      background: #f5f1e7;
+      border: 1px solid rgba(20, 28, 38, 0.08);
+      overflow: hidden;
+      box-shadow: 0 18px 40px rgba(20, 26, 36, 0.08);
+    }
+
+    .industry-card:nth-child(even) {
+      background: #f3e7d0;
+    }
+
+    .industry-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .industry-card-body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 26px 28px;
+    }
+
+    .industry-index {
+      color: var(--brand-dark);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .industry-card h3 {
+      font-size: clamp(2rem, 2vw, 2.8rem);
+      line-height: 1.08;
+      letter-spacing: -0.05em;
+      color: #1a2029;
+      margin-bottom: 14px;
+      font-weight: 500;
+    }
+
+    .industry-card p {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.75;
+      margin-bottom: 18px;
+    }
+
+    .industry-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .industry-list span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 12px;
+      border: 1px solid rgba(20, 28, 38, 0.12);
+      background: rgba(255, 255, 255, 0.4);
+      color: #1a2029;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .testimonial-section {
+      max-width: 1280px;
+      margin: 0 auto 80px;
+      position: relative;
+      padding: 0 6px;
+    }
+
+    .testimonial-media {
+      position: relative;
+      min-height: 560px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: 
+        linear-gradient(90deg, rgba(9, 16, 22, 0.76), rgba(9, 16, 22, 0.7)),
+        url('https://images.unsplash.com/photo-1581092921461-eab62e97a8f4?auto=format&fit=crop&w=1800&q=80') center/cover no-repeat;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      box-shadow: 0 32px 60px rgba(7, 14, 20, 0.25);
+      overflow: hidden;
+    }
+
+    .testimonial-media::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        90deg,
+        rgba(255,255,255,0.03) 0,
+        rgba(255,255,255,0.03) 1px,
+        transparent 1px,
+        transparent 12px
+      );
+      opacity: 0.58;
+      pointer-events: none;
+    }
+
+    .testimonial-shell {
+      position: relative;
+      width: min(1160px, calc(100% - 80px));
+      min-height: 350px;
+      padding: 42px 36px 30px 36px;
+      border: 2px solid rgba(255, 255, 255, 0.7);
+      background: rgba(7, 17, 24, 0.15);
+      backdrop-filter: blur(1px);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08);
+    }
+
+    .testimonial-inner {
+      position: relative;
+      display: grid;
+      grid-template-columns: 124px 1fr;
+      gap: 18px 28px;
+      align-items: center;
+    }
+
+    .testimonial-quote-mark {
+      font-size: clamp(4rem, 5vw, 7rem);
+      line-height: 0.9;
+      font-weight: 800;
+      color: var(--brand);
+      margin-top: -6px;
+      letter-spacing: -0.08em;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .testimonial-text {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: clamp(1.5rem, 2vw, 2.5rem);
+      line-height: 1.5;
+      letter-spacing: -0.04em;
+      font-weight: 400;
+      max-width: 920px;
+      margin: 0;
+    }
+
+    .testimonial-author {
+      margin-top: 24px;
+      color: rgba(255, 255, 255, 0.96);
+      font-size: clamp(1.1rem, 1.6vw, 2rem);
+      line-height: 1.15;
+      font-weight: 700;
+    }
+
+    .testimonial-role {
+      margin-top: 6px;
+      color: var(--brand);
+      font-size: clamp(1.15rem, 1.5vw, 1.7rem);
+      line-height: 1.4;
+      font-weight: 600;
+    }
+
+    @media (max-width: 700px) {
+      .testimonial-shell {
+        width: min(100%, calc(100% - 28px));
+        padding: 28px 18px 22px;
+      }
+
+      .testimonial-inner {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .testimonial-quote-mark {
+        margin-bottom: 6px;
+      }
+
+      .testimonial-text {
+        font-size: 1.35rem;
+      }
+    }
+
+    .clients-section {
+      max-width: 1280px;
+      margin: 0 auto 80px;
+      padding: 0 6px;
+    }
+
+    .clients-header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 26px;
+    }
+
+    .clients-eyebrow {
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: var(--brand-soft);
+      border: 1px solid rgba(184, 109, 0, 0.18);
+      color: var(--brand-dark);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+
+    .clients-header h2 {
+      font-size: clamp(2rem, 3vw, 3.2rem);
+      line-height: 1.08;
+      letter-spacing: -0.06em;
+      color: var(--text);
+      max-width: 620px;
+    }
+
+    .clients-header h2 .is-typing::after {
+      content: '';
+      display: inline-block;
+      width: 2px;
+      height: 0.85em;
+      margin-left: 4px;
+      vertical-align: -0.05em;
+      background: currentColor;
+      animation: typing-caret 0.8s steps(1) infinite;
+    }
+
+    @keyframes typing-caret {
+      50% { opacity: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .clients-header h2 .is-typing::after { animation: none; }
+    }
+
+    .clients-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(160px, 1fr));
+      gap: 18px;
+    }
+
+    .client-logo {
+      min-height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 18px;
+      background: rgba(255, 255, 255, 0.66);
+      border: 1px solid rgba(20, 28, 38, 0.08);
+      color: #1b2431;
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      box-shadow: 0 12px 30px rgba(15, 23, 38, 0.04);
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+
+    .client-logo:hover {
+      transform: translateY(-4px);
+      border-color: rgba(184, 109, 0, 0.28);
+    }
+
+    @media (max-width: 980px) {
+      .clients-grid {
+        grid-template-columns: repeat(3, minmax(140px, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .clients-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .clients-grid {
+        grid-template-columns: repeat(2, minmax(130px, 1fr));
+      }
+
+      .client-logo {
+        min-height: 90px;
+        font-size: 0.85rem;
+        letter-spacing: 0.12em;
+      }
+    }
+
+    .project-card {
+      display: grid;
+      grid-template-columns: 1.45fr 1fr;
+      min-height: 360px;
+      background: #0d1b2a;
+      border-radius: 0;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .project-card:nth-child(even) {
+      background: #0f1f2f;
+    }
+
+    .project-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(0.9) contrast(1.02);
+    }
+
+    .project-body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 30px 26px 26px 30px;
+      background: rgba(13, 27, 42, 0.98);
+      color: #fff;
+    }
+
+    .project-title {
+      font-size: clamp(2rem, 2.2vw, 3rem);
+      line-height: 1.1;
+      letter-spacing: -0.05em;
+      color: #fff;
+      margin: 0 0 18px;
+      font-weight: 400;
+    }
+
+    .project-body p {
+      color: rgba(255, 255, 255, 0.76);
+      font-size: 16px;
+      line-height: 1.7;
+      margin: 0 0 26px;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: #fff;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255, 255, 255, 0.18);
+      margin-top: auto;
+    }
+
+    .project-link span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.08);
+      transition: transform 0.2s ease;
+    }
+
+    .project-card:hover .project-link span {
+      transform: translate(2px, -2px);
+    }
+
+    @media (max-width: 980px) {
+      .projects-showcase-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .projects-intro {
+        position: static;
+      }
+
+      .projects-scroll-stack {
+        max-height: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .project-card {
+        grid-template-columns: 1fr;
+      }
+
+      .project-image {
+        max-height: 260px;
+      }
+    }
+
+    .gr-product-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 28px;
+      margin-bottom: 28px;
+      padding: 0 6px;
+    }
+
+    .gr-product-heading {
+      max-width: 420px;
+    }
+
+    .gr-product-tag {
+      display: inline-block;
+      background: var(--brand-soft);
+      color: var(--brand-dark);
+      border: 1px solid rgba(184, 109, 0, 0.18);
+      border-radius: 999px;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 700;
+      padding: 8px 16px;
+      margin-bottom: 16px;
+    }
+
+    .gr-product-heading h2 {
+      font-size: clamp(2.2rem, 3vw, 4rem);
+      line-height: 1.02;
+      font-weight: 700;
+      letter-spacing: -0.06em;
+      color: #101826;
+    }
+
+    .gr-product-heading h2 strong {
+      color: var(--brand-dark);
+      font-weight: 800;
+    }
+
+    .gr-product-intro {
+      max-width: 500px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.8;
+      margin-left: auto;
+    }
+
+    .gr-product-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 10px 0 0;
+    }
+
+    .gr-product-slider-btn {
+      width: 54px;
+      height: 54px;
+      border: 1px solid rgba(16, 24, 38, 0.12);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.72);
+      color: var(--text);
+      font-size: 28px;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 12px 25px rgba(16, 24, 38, 0.08);
+      z-index: 3;
+      transition: all 0.25s ease;
+    }
+
+    .gr-product-slider-btn:hover {
+      background: linear-gradient(135deg, var(--brand), var(--brand-dark));
+      color: #fff;
+      transform: translateY(-2px);
+      border-color: transparent;
+      box-shadow: 0 18px 30px rgba(184, 109, 0, 0.18);
+    }
+
+    .gr-product-prev,
+    .gr-product-next {
+      position: static;
+      left: auto;
+      right: auto;
+      top: auto;
+    }
+
+    .gr-product-slider-track {
+      display: flex;
+      gap: 24px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      padding: 14px 12px 20px 12px;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      width: 100%;
+    }
+
+    .gr-product-slider-track::-webkit-scrollbar {
+      display: none;
+    }
+
+    .gr-product-card {
+      position: relative;
+      flex: 0 0 300px;
+      min-width: 300px;
+      height: 430px;
+      border-radius: 24px;
+      overflow: hidden;
+      background: #0d1b2a;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .gr-product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 28px 45px rgba(15, 23, 38, 0.18);
+    }
+
+    .gr-product-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(0.9) contrast(1.05);
+    }
+
+    .gr-product-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(6, 11, 19, 0.06), rgba(6, 11, 19, 0.82));
+    }
+
+    .gr-product-number {
+      position: absolute;
+      top: 22px;
+      right: 22px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: rgba(255, 255, 255, 0.75);
+      z-index: 2;
+    }
+
+    .gr-product-content {
+      position: absolute;
+      left: 22px;
+      right: 22px;
+      bottom: 22px;
+      z-index: 2;
+      color: #fff;
+    }
+
+    .gr-product-category {
+      display: inline-block;
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(3px);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .gr-product-content h3 {
+      font-size: clamp(1.5rem, 2vw, 2rem);
+      line-height: 1.1;
+      margin-bottom: 12px;
+      letter-spacing: -0.04em;
+    }
+
+    .gr-product-content p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.78);
+      margin-bottom: 18px;
+    }
+
+    .gr-product-read-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #fff;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .gr-product-read-more span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      background: rgba(255, 255, 255, 0.08);
+      font-size: 15px;
+      transition: transform 0.2s ease;
+    }
+
+    .gr-product-card:hover .gr-product-read-more span {
+      transform: translate(2px, -2px);
+    }
+
+    .gr-product-slider-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 18px;
+      padding: 0 6px;
+    }
+
+    .gr-product-progress {
+      flex: 1;
+      height: 4px;
+      background: rgba(16, 24, 38, 0.1);
+      border-radius: 999px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .gr-product-progress span {
+      display: block;
+      width: 0;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--brand), var(--brand-dark));
+      transition: width 0.3s ease;
+    }
+
+    .gr-product-counter {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .gr-product-counter strong {
+      color: var(--text);
+      font-size: 18px;
+      letter-spacing: -0.04em;
+    }
+
+    .gr-product-bottom-actions {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-left: auto;
+    }
+
+    .gr-product-bottom-actions .gr-product-slider-btn {
+      position: static;
+      width: 40px;
+      height: 40px;
+      font-size: 22px;
+      background: rgba(255, 255, 255, 0.8);
+      box-shadow: 0 10px 18px rgba(16, 24, 38, 0.08);
+    }
+
+    .gr-product-bottom-actions .gr-product-slider-btn:hover {
+      background: linear-gradient(135deg, var(--brand), var(--brand-dark));
+      color: #fff;
+      border-color: transparent;
+    }
+
+    .gr-product-bottom-actions .gr-product-prev,
+    .gr-product-bottom-actions .gr-product-next {
+      left: auto;
+      right: auto;
+    }
+
+    @media (max-width: 980px) {
+      .gr-product-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .gr-product-intro {
+        margin-left: 0;
+      }
+    }
+
+    @media (max-width: 640px) {
+      body {
+        padding: 40px 14px;
+      }
+
+      .gr-product-slider-btn {
+        width: 46px;
+        height: 46px;
+        font-size: 24px;
+      }
+
+      .gr-product-next {
+        left: 56px;
+      }
+
+      .gr-product-slider-track {
+        padding-left: 110px;
+        padding-right: 16px;
+      }
+
+      .gr-product-card {
+        flex-basis: 270px;
+        min-width: 270px;
+      }
+
+      .gr-product-card h3 {
+        font-size: 1.45rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="projects-showcase-section">
+    <div class="projects-showcase-layout">
+      <div class="projects-intro">
+        <h2>
+          Our<br>
+          <strong>latest</strong>
+          <strong>projects.</strong>
+        </h2>
+        <span class="project-line"></span>
+
+        <p>
+          At Industify Company, we rely on honesty, discipline and hard work and believe our success can be attributed to upholding a simple set of core values that date back to the beginning of the company.
+        </p>
+
+        <p>
+          Industify is an integrated design-build firm offering engineering, architecture and construction services to domestic and international customers throughout the U.S. Unique to Industify is the fact that we conduct all disciplines in-house in a collaborative environment.
+        </p>
+
+        <a href="#" class="view-all-btn">View all projects</a>
+      </div>
+
+      <div class="projects-scroll-stack">
+        <article class="project-card">
+          <img class="project-image" src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=900&q=80" alt="Industrial warehouse project" />
+          <div class="project-body">
+            <h3 class="project-title">Industify Gas and Oil Organization</h3>
+            <p>We go beyond testing, inspecting and certifying products; we are a Total Quality Assurance provider to industries worldwide...</p>
+            <a href="#" class="project-link">More Details <span>→</span></a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <img class="project-image" src="https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=900&q=80" alt="Commercial facility project" />
+          <div class="project-body">
+            <h3 class="project-title">Industrial Facility Expansion</h3>
+            <p>We go beyond testing, inspecting and certifying products; we are a Total Quality Assurance provider to industries worldwide...</p>
+            <a href="#" class="project-link">More Details <span>→</span></a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <img class="project-image" src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=900&q=80" alt="Manufacturing plant project" />
+          <div class="project-body">
+            <h3 class="project-title">Manufacturing Plant Upgrade</h3>
+            <p>We go beyond testing, inspecting and certifying products; we are a Total Quality Assurance provider to industries worldwide...</p>
+            <a href="#" class="project-link">More Details <span>→</span></a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <img class="project-image" src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=900&q=80" alt="Energy project" />
+          <div class="project-body">
+            <h3 class="project-title">Utility &amp; Energy Systems</h3>
+            <p>We go beyond testing, inspecting and certifying products; we are a Total Quality Assurance provider to industries worldwide...</p>
+            <a href="#" class="project-link">More Details <span>→</span></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="industries-showcase-section">
+    <div class="industries-showcase-layout">
+      <div class="industries-intro">
+        <span class="mini-label">OUR INDUSTRIES</span>
+        <h2>
+          Trusted by<br>
+          <strong>industry leaders.</strong>
+        </h2>
+        <span class="industry-line"></span>
+        <p>
+          We deliver high-performance rubber and sealing solutions to sectors where reliability, durability and precision are non-negotiable. From automotive to infrastructure, our products keep critical systems efficient and safe.
+        </p>
+        <a href="#" class="view-all-btn">Explore industries</a>
+      </div>
+
+      <div class="industries-scroll-stack">
+        <article class="industry-card">
+          <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=900&q=80" alt="Automotive industry" />
+          <div class="industry-card-body">
+            <span class="industry-index">01 / Automotive</span>
+            <h3>Automotive</h3>
+            <p>Engineered rubber components for sealing, vibration control, thermal stability and long-life performance in vehicles and transport systems.</p>
+            <div class="industry-list">
+              <span>Gaskets</span>
+              <span>Hoses</span>
+              <span>Profiles</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="industry-card">
+          <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=900&q=80" alt="Construction industry" />
+          <div class="industry-card-body">
+            <span class="industry-index">02 / Construction</span>
+            <h3>Construction</h3>
+            <p>Weather-resistant rubber solutions for infrastructure and building systems, helping improve safety, drainage and structural longevity.</p>
+            <div class="industry-list">
+              <span>Seals</span>
+              <span>Expansion</span>
+              <span>Insulation</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="industry-card">
+          <img src="https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?auto=format&fit=crop&w=900&q=80" alt="Industrial manufacturing industry" />
+          <div class="industry-card-body">
+            <span class="industry-index">03 / Manufacturing</span>
+            <h3>Manufacturing</h3>
+            <p>Custom-moulded and extruded rubber parts built for plant machinery, heavy-duty operations and industrial process efficiency.</p>
+            <div class="industry-list">
+              <span>Extrusions</span>
+              <span>Tubes</span>
+              <span>Moulded parts</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="industry-card">
+          <img src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=900&q=80" alt="Power and energy industry" />
+          <div class="industry-card-body">
+            <span class="industry-index">04 / Energy</span>
+            <h3>Power &amp; Energy</h3>
+            <p>Reliable sealing systems for electrical, mechanical and utility environments where heat and pressure demand consistent performance.</p>
+            <div class="industry-list">
+              <span>Insulation</span>
+              <span>Seals</span>
+              <span>Protection</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonial-section">
+    <div class="testimonial-media">
+      <div class="testimonial-shell">
+        <div class="testimonial-inner">
+          <div class="testimonial-quote-mark">“</div>
+
+          <div>
+            <p class="testimonial-text">
+              Hiday Motors needed to build a brand new 28,000 sq facility that would both meet our needs and comply with GMs standards - which seemed daunting, to say the least. Industify alleviated all of our concerns and communicated with us every step of the way. We have received dozens of compliments from our customers, and our employees love the new store!
+            </p>
+
+            <div class="testimonial-author">Steve Lehman</div>
+            <div class="testimonial-role">CEO of Hiday Motors.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="clients-section">
+    <div class="clients-header">
+      <span class="clients-eyebrow">Our Clients</span>
+      <h2 aria-label="Trusted by leading industrial partners."><span class="clients-heading-text" aria-hidden="true">Trusted by leading industrial partners.</span></h2>
+    </div>
+
+    <div class="clients-grid">
+      <div class="client-logo">Mahindra</div>
+      <div class="client-logo">Tata</div>
+      <div class="client-logo">Bosch</div>
+      <div class="client-logo">Hero</div>
+      <div class="client-logo">Siemens</div>
+    </div>
+  </section>
+
+  <section class="gr-product-section">
+
+    <div class="gr-product-header">
+      <div class="gr-product-heading">
+        <span class="gr-product-tag">OUR PRODUCTS</span>
+        <h2>
+          Industrial Rubber<br>
+          <strong>Solutions</strong>
+        </h2>
+      </div>
+
+      <p class="gr-product-intro">
+        High-quality rubber extrusions, profiles, gaskets,
+        tubes and custom moulded components engineered for
+        demanding industrial applications.
+      </p>
+    </div>
+
+    <div class="gr-product-wrapper">
+      <div class="gr-product-slider-track" id="grProductSliderTrack">
+
+        <article class="gr-product-card">
+          <img src="https://gauravrubber.omsoftsolution.net.in/wp-content/uploads/2026/09/1.webp" alt="EPDM Gaskets" />
+          <div class="gr-product-overlay"></div>
+          <div class="gr-product-number">01</div>
+          <div class="gr-product-content">
+            <span class="gr-product-category">EPDM</span>
+            <h3>EPDM Gaskets</h3>
+            <p>High-performance EPDM rubber gaskets designed for sealing, glazing and industrial applications.</p>
+            <a href="#" class="gr-product-read-more">Read More <span>↗</span></a>
+          </div>
+        </article>
+
+        <article class="gr-product-card">
+          <img src="https://gauravrubber.omsoftsolution.net.in/wp-content/uploads/2026/09/2.webp" alt="Rubber Profile" />
+          <div class="gr-product-overlay"></div>
+          <div class="gr-product-number">02</div>
+          <div class="gr-product-content">
+            <span class="gr-product-category">EXTRUSION</span>
+            <h3>Rubber Profile</h3>
+            <p>Precision extruded rubber profiles for automotive, construction and industrial requirements.</p>
+            <a href="#" class="gr-product-read-more">Read More <span>↗</span></a>
+          </div>
+        </article>
+
+        <article class="gr-product-card">
+          <img src="https://gauravrubber.omsoftsolution.net.in/wp-content/uploads/2026/09/3.webp" alt="EPDM Rubber Tube" />
+          <div class="gr-product-overlay"></div>
+          <div class="gr-product-number">03</div>
+          <div class="gr-product-content">
+            <span class="gr-product-category">TUBES</span>
+            <h3>EPDM Rubber Tube</h3>
+            <p>Durable EPDM rubber tubes and pipes manufactured for reliable long-term industrial performance.</p>
+            <a href="#" class="gr-product-read-more">Read More <span>↗</span></a>
+          </div>
+        </article>
+
+        <article class="gr-product-card">
+          <img src="https://gauravrubber.omsoftsolution.net.in/wp-content/uploads/2026/09/4.webp" alt="Rubber Cords" />
+          <div class="gr-product-overlay"></div>
+          <div class="gr-product-number">04</div>
+          <div class="gr-product-content">
+            <span class="gr-product-category">CORDS</span>
+            <h3>Rubber Cords</h3>
+            <p>EPDM, silicone, neoprene and sponge rubber cords for sealing and specialized applications.</p>
+            <a href="#" class="gr-product-read-more">Read More <span>↗</span></a>
+          </div>
+        </article>
+
+        <article class="gr-product-card">
+          <img src="https://gauravrubber.omsoftsolution.net.in/wp-content/uploads/2026/09/5.webp" alt="Silicone Rubber" />
+          <div class="gr-product-overlay"></div>
+          <div class="gr-product-number">05</div>
+          <div class="gr-product-content">
+            <span class="gr-product-category">SILICONE</span>
+            <h3>Silicone Rubber</h3>
+            <p>Flexible silicone extrusions, tubes and profiles for demanding temperature-sensitive applications.</p>
+            <a href="#" class="gr-product-read-more">Read More <span>↗</span></a>
+          </div>
+        </article>
+
+        <article class="gr-product-card">
+          <img src="https://gauravrubber.omsoftsolution.net.in/wp-content/uploads/2026/09/6.webp" alt="Curtain Wall Gaskets" />
+          <div class="gr-product-overlay"></div>
+          <div class="gr-product-number">06</div>
+          <div class="gr-product-content">
+            <span class="gr-product-category">BUILDING</span>
+            <h3>Curtain Wall Gaskets</h3>
+            <p>Reliable glazing gaskets and rubber sealing solutions for modern curtain wall systems.</p>
+            <a href="#" class="gr-product-read-more">Read More <span>↗</span></a>
+          </div>
+        </article>
+
+        <article class="gr-product-card">
+          <img src="https://gauravrubber.omsoftsolution.net.in/wp-content/uploads/2026/09/7.webp" alt="Nitrile Rubber Profile" />
+          <div class="gr-product-overlay"></div>
+          <div class="gr-product-number">07</div>
+          <div class="gr-product-content">
+            <span class="gr-product-category">NITRILE</span>
+            <h3>Nitrile Rubber Profile</h3>
+            <p>Oil-resistant nitrile rubber profiles developed for demanding sealing applications.</p>
+            <a href="#" class="gr-product-read-more">Read More <span>↗</span></a>
+          </div>
+        </article>
+
+        <article class="gr-product-card">
+          <img src="https://gauravrubber.omsoftsolution.net.in/wp-content/uploads/2026/09/8.webp" alt="Rubber Flock Channel" />
+          <div class="gr-product-overlay"></div>
+          <div class="gr-product-number">08</div>
+          <div class="gr-product-content">
+            <span class="gr-product-category">FLOCK</span>
+            <h3>Rubber Flock Channel</h3>
+            <p>EPDM flock channels engineered for secure, smooth and durable glass mounting.</p>
+            <a href="#" class="gr-product-read-more">Read More <span>↗</span></a>
+          </div>
+        </article>
+
+        <article class="gr-product-card">
+          <img src="https://gauravrubber.omsoftsolution.net.in/wp-content/uploads/2026/09/9.webp" alt="Elastomeric Bearing Pads" />
+          <div class="gr-product-overlay"></div>
+          <div class="gr-product-number">09</div>
+          <div class="gr-product-content">
+            <span class="gr-product-category">BEARING</span>
+            <h3>Elastomeric Bearing Pads</h3>
+            <p>Heavy-duty elastomeric bearing solutions for bridges and structural applications.</p>
+            <a href="#" class="gr-product-read-more">Read More <span>↗</span></a>
+          </div>
+        </article>
+
+        <article class="gr-product-card">
+          <img src="https://gauravrubber.omsoftsolution.net.in/wp-content/uploads/2026/09/2.webp" alt="EPDM Rubber Profile" />
+          <div class="gr-product-overlay"></div>
+          <div class="gr-product-number">10</div>
+          <div class="gr-product-content">
+            <span class="gr-product-category">EPDM</span>
+            <h3>EPDM Rubber Profile</h3>
+            <p>Custom extruded EPDM profiles and sponge gaskets for industrial sealing requirements.</p>
+            <a href="#" class="gr-product-read-more">Read More <span>↗</span></a>
+          </div>
+        </article>
+
+        <article class="gr-product-card">
+          <img src="https://gauravrubber.omsoftsolution.net.in/wp-content/uploads/2026/09/clamp.webp" alt="Rubber Lined Split Clamps" />
+          <div class="gr-product-overlay"></div>
+          <div class="gr-product-number">11</div>
+          <div class="gr-product-content">
+            <span class="gr-product-category">CLAMPS</span>
+            <h3>Rubber Lined Split Clamps</h3>
+            <p>Rubber-lined clamps designed to protect pipes, cables and industrial installations.</p>
+            <a href="#" class="gr-product-read-more">Read More <span>↗</span></a>
+          </div>
+        </article>
+
+        <article class="gr-product-card">
+          <img src="https://gauravrubber.omsoftsolution.net.in/wp-content/uploads/2026/09/edpm.webp" alt="Rubber Tube" />
+          <div class="gr-product-overlay"></div>
+          <div class="gr-product-number">12</div>
+          <div class="gr-product-content">
+            <span class="gr-product-category">TUBES</span>
+            <h3>Rubber Tube</h3>
+            <p>Industrial rubber tubes manufactured for reliable fluid handling and general industrial applications.</p>
+            <a href="#" class="gr-product-read-more">Read More <span>↗</span></a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+    <div class="gr-product-slider-bottom">
+      <div class="gr-product-progress">
+        <span id="grProductProgressBar"></span>
+      </div>
+
+      <div class="gr-product-counter">
+        <strong id="grProductCurrentSlide">01</strong>
+        <span>/ 12</span>
+      </div>
+
+      <div class="gr-product-bottom-actions">
+        <button type="button" class="gr-product-slider-btn gr-product-prev" id="grProductBottomPrevBtn" aria-label="Previous products">&#8592;</button>
+        <button type="button" class="gr-product-slider-btn gr-product-next" id="grProductBottomNextBtn" aria-label="Next products">&#8594;</button>
+      </div>
+    </div>
+
+  </section>
+
+  <script>
+    const clientsHeading = document.querySelector('.clients-heading-text');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (clientsHeading && !reduceMotion) {
+      const headingText = clientsHeading.textContent;
+      clientsHeading.textContent = '';
+      clientsHeading.classList.add('is-typing');
+      let character = 0;
+      const typeNextCharacter = () => {
+        clientsHeading.textContent += headingText[character++];
+        if (character < headingText.length) window.setTimeout(typeNextCharacter, 55);
+      };
+      window.setTimeout(typeNextCharacter, 250);
+    }
+
+    const track = document.getElementById('grProductSliderTrack');
+    const prevBtn = document.getElementById('grProductBottomPrevBtn');
+    const nextBtn = document.getElementById('grProductBottomNextBtn');
+    const progressBar = document.getElementById('grProductProgressBar');
+    const currentSlide = document.getElementById('grProductCurrentSlide');
+    const cards = [...document.querySelectorAll('.gr-product-card')];
+    const totalSlides = cards.length;
+
+    function getStep() {
+      if (!cards.length) return 0;
+      const firstCard = cards[0];
+      const style = window.getComputedStyle(track);
+      const gap = parseFloat(style.columnGap || style.gap || 24) || 24;
+      return firstCard.getBoundingClientRect().width + gap;
+    }
+
+    function updateProgress() {
+      if (!cards.length) return;
+
+      const cardStep = getStep();
+      const maxOffset = Math.max(0, track.scrollWidth - track.clientWidth);
+      const currentIndex = maxOffset > 0
+        ? Math.min(totalSlides - 1, Math.max(0, Math.round(track.scrollLeft / cardStep)))
+        : 0;
+
+      const percent = totalSlides > 0 ? ((currentIndex + 1) / totalSlides) * 100 : 0;
+      progressBar.style.width = percent + '%';
+      currentSlide.textContent = String(currentIndex + 1).padStart(2, '0');
+    }
+
+    prevBtn.addEventListener('click', () => {
+      track.scrollBy({ left: -getStep(), behavior: 'smooth' });
+    });
+
+    nextBtn.addEventListener('click', () => {
+      track.scrollBy({ left: getStep(), behavior: 'smooth' });
+    });
+
+    track.addEventListener('scroll', updateProgress, { passive: true });
+    window.addEventListener('resize', updateProgress);
+    updateProgress();
+  </script>
+
+</body>
+</html>

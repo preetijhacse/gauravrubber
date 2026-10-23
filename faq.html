@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why Choose CTC - AGL Specialists</title>
+    <!-- Google Fonts: Inter for clean, modern engineering aesthetic -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0B0F17; /* Deep aviation night sky / tarmac */
+            --card-bg: #131B2E; /* Dark slate card background */
+            --card-border: #1E293B;
+            --accent-green: #10B981; /* AGL taxiway center/edge green vibe */
+            --accent-amber: #F59E0B; /* Runway amber/yellow warning vibe */
+            --text-main: #F8FAFC;
+            --text-muted: #94A3B8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            padding: 60px 20px;
+        }
+
+        .agl-why-choose-section {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Section Header */
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-amber);
+            margin-bottom: 12px;
+            background: rgba(245, 158, 11, 0.1);
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1px solid rgba(245, 158, 11, 0.2);
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 3vw, 2.75rem);
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 15px;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        /* Grid Layout */
+        .agl-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 968px) {
+            .agl-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .agl-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Card Styling */
+        .agl-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 32px 24px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        /* Runway glowing edge accent line on hover */
+        .agl-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent-amber), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .agl-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(245, 158, 11, 0.4);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        .agl-card:hover::before {
+            opacity: 1;
+        }
+
+        /* Icon Container */
+        .icon-box {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: var(--accent-green);
+        }
+
+        .icon-box svg {
+            width: 24px;
+            height: 24px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* Typography inside cards */
+        .agl-card h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 10px;
+        }
+
+        .agl-card p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+    <section class="agl-why-choose-section">
+        <!-- Header -->
+        <div class="section-header">
+            <span class="eyebrow">The CTC Advantage</span>
+            <h2>Why Choose CTC for Airfield Ground Lighting</h2>
+            <p>Engineered for mission-critical airfield environments where safety, compliance, and precision compliance are non-negotiable.</p>
+        </div>
+
+        <!-- 6 Cards Grid -->
+        <div class="agl-grid">
+            
+            <!-- Card 1: AGL Focused -->
+            <div class="agl-card">
+                <div class="icon-box">
+                    <!-- Runway Light Icon / Target -->
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="3"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line></svg>
+                </div>
+                <h3>AGL Focused Specialization</h3>
+                <p>Our entire product and service portfolio is dedicated exclusively to Airfield Ground Lighting applications, ensuring absolute domain depth.</p>
+            </div>
+
+            <!-- Card 2: Manufacturing Capability -->
+            <div class="agl-card">
+                <div class="icon-box">
+                    <!-- Precision Assembly / Factory Icon -->
+                    <svg viewBox="0 0 24 24"><path d="M2 20h20M5 20V8l7-5 7 5v12M9 12h6"/></svg>
+                </div>
+                <h3>Dedicated Manufacturing</h3>
+                <p>Specialized manufacturing and assembly frameworks purpose-built for critical AGL fixtures, inset lights, and elevated components.</p>
+            </div>
+
+            <!-- Card 3: Field Experience -->
+            <div class="agl-card">
+                <div class="icon-box">
+                    <!-- Photometry / Field Measurement Icon -->
+                    <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                    <svg viewBox="0 0 24 24"><path d="M2 12h20M12 2v20M17 7l-10 10M7 7l10 10"/></svg>
+                </div>
+                <h3>Proven Field Experience</h3>
+                <p>Practical, boots-on-the-ground mastery spanning rigorous AGL installation, complex testing, live commissioning, and precise airfield photometry.</p>
+            </div>
+
+            <!-- Card 4: Quality Control -->
+            <div class="agl-card">
+                <div class="icon-box">
+                    <!-- Quality Shield/Inspection Icon -->
+                    <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
+                </div>
+                <h3>Rigorous Quality Control</h3>
+                <p>Products are subjected to strict simulation inspection, thermal, and photometric testing loops before being cleared for airfield dispatch.</p>
+            </div>
+
+            <!-- Card 5: Technical Support -->
+            <div class="agl-card">
+                <div class="icon-box">
+                    <!-- Engineering Support / Blueprint Icon -->
+                    <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                </div>
+                <h3>End-to-End Technical Support</h3>
+                <p>Seamless engineering support stretching right from initial system enquiry and catalog product selection through full-scale project execution.</p>
+            </div>
+
+            <!-- Card 6: Project Understanding -->
+            <div class="agl-card">
+                <div class="icon-box">
+                    <!-- Airport Tower / Compliance Document Icon -->
+                    <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                </div>
+                <h3>Deep Project Understanding</h3>
+                <p>Deep familiarity with international airport project blueprints, strict technical documentation, FAA/ICAO standards, and extreme field environments.</p>
+            </div>
+
+        </div>
+    </section>
+
+</body>
+</html>

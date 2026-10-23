@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Collapsible Side Menu Header</title>
+  <style>
+    :root {
+      --header-height: 60px;
+      --sidebar-width: 280px;
+      --primary-bg: #0f172a;
+      --sidebar-bg: #1e293b;
+      --accent-color: #38bdf8;
+      --text-color: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background-color: var(--primary-bg);
+      color: var(--text-color);
+      min-height: 100vh;
+    }
+
+    /* --- Top Header Bar --- */
+    .top-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--header-height);
+      background-color: var(--sidebar-bg);
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      z-index: 100;
+    }
+
+    /* Toggle Hamburger Button */
+    .toggle-btn {
+      background: none;
+      border: none;
+      color: var(--text-color);
+      font-size: 24px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      transition: background 0.2s ease;
+    }
+
+    .toggle-btn:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .header-title {
+      margin-left: 16px;
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    /* --- Side Menu Navigation --- */
+    .side-menu {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: var(--sidebar-width);
+      height: 100%;
+      background-color: var(--sidebar-bg);
+      z-index: 200;
+      transform: translateX(-100%);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      box-shadow: 4px 0 25px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Open State for Side Menu */
+    .side-menu.active {
+      transform: translateX(0);
+    }
+
+    /* Side Menu Header Header */
+    .side-menu-header {
+      height: var(--header-height);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .menu-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--accent-color);
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 22px;
+      cursor: pointer;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+
+    .close-btn:hover {
+      color: var(--text-color);
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Side Menu Links */
+    .nav-list {
+      list-style: none;
+      padding: 20px 0;
+    }
+
+    .nav-item a {
+      display: flex;
+      align-items: center;
+      padding: 14px 24px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .nav-item a:hover {
+      color: var(--text-color);
+      background-color: rgba(56, 189, 248, 0.1);
+      border-left: 4px solid var(--accent-color);
+    }
+
+    /* Backdrop Overlay */
+    .backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(2px);
+      z-index: 150;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .backdrop.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* --- Page Content Placeholder --- */
+    .main-content {
+      margin-top: var(--header-height);
+      padding: 40px 20px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .main-content h2 {
+      margin-bottom: 12px;
+    }
+
+    .main-content p {
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Header Bar -->
+  <header class="top-header">
+    <button class="toggle-btn" id="toggleBtn" aria-label="Open Menu">
+      &#9776; <!-- Hamburger Icon -->
+    </button>
+    <div class="header-title">My Application</div>
+  </header>
+
+  <!-- Side Menu Drawer -->
+  <aside class="side-menu" id="sideMenu">
+    <div class="side-menu-header">
+      <span class="menu-title">Navigation</span>
+      <button class="close-btn" id="closeBtn" aria-label="Close Menu">&times;</button>
+    </div>
+    <nav>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="#dashboard">Home</a></li>
+        <li class="nav-item"><a href="#products">Products</a></li>
+        <li class="nav-item"><a href="#categories">Our Customers</a></li>
+        <li class="nav-item"><a href="#analytics">Industries</a></li>
+        <li class="nav-item"><a href="#settings">Contact Us</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- Dark Backdrop for Screen Dimming -->
+  <div class="backdrop" id="backdrop"></div>
+  <script>
+    const toggleBtn = document.getElementById('toggleBtn');
+    const closeBtn = document.getElementById('closeBtn');
+    const sideMenu = document.getElementById('sideMenu');
+    const backdrop = document.getElementById('backdrop');
+
+    // Function to open side menu
+    function openMenu() {
+      sideMenu.classList.add('active');
+      backdrop.classList.add('active');
+    }
+
+    // Function to close side menu
+    function closeMenu() {
+      sideMenu.classList.remove('active');
+      backdrop.classList.remove('active');
+    }
+
+    // Event Listeners
+    toggleBtn.addEventListener('click', openMenu);
+    closeBtn.addEventListener('click', closeMenu);
+    backdrop.addEventListener('click', closeMenu);
+
+    // Close on Escape Key Press
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && sideMenu.classList.contains('active')) {
+        closeMenu();
+      }
+    });
+  </script>
+
+</body>
+</html>

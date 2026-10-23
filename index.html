@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apex Ignite — Precision Plastic Components</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-dark: #08111E;
+      --bg-card: #0E1E33;
+      --bg-raise: #152943;
+      --text: #F1F5F9;
+      --text-dim: #94A3B8;
+      --accent: #2563EB;
+      --accent-soft: #60A5FA;
+      --line: rgba(255, 255, 255, 0.08);
+      --glass: rgba(14, 30, 51, 0.7);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+      line-height: 1.5;
+    }
+
+    /* ===== MODERN NAVBAR ===== */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: var(--glass);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+    }
+
+    .brand-logo {
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #fff;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .brand-logo span {
+      background: linear-gradient(135deg, var(--accent-soft), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .menu-item { position: relative; }
+
+    .menu-link {
+      color: var(--text-dim);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: color 0.3s;
+    }
+
+    .menu-link:hover { color: #fff; }
+
+    .sub-menu {
+      position: absolute;
+      top: 130%;
+      left: 0;
+      width: 300px;
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+      list-style: none;
+      padding: 0.6rem 0;
+      z-index: 200;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .sub-menu.show {
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .sub-menu li a {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.7rem 1.25rem;
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    .sub-menu li a:hover {
+      background: rgba(37, 99, 235, 0.15);
+      color: #fff;
+    }
+
+    .btn-contact {
+      background: linear-gradient(135deg, #2563EB, #1D4ED8);
+      color: #fff;
+      padding: 0.6rem 1.4rem;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-contact:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+    }
+
+    /* ===== HERO SECTION (IMAGE-FOCUSED) ===== */
+    .hero {
+      position: relative;
+      padding: 160px 2rem 80px;
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    @media (min-width: 992px) {
+      .hero { grid-template-columns: 0.9fr 1.1fr; }
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(96, 165, 250, 0.1);
+      border: 1px solid rgba(96, 165, 250, 0.25);
+      padding: 0.4rem 1rem;
+      border-radius: 30px;
+      color: var(--accent-soft);
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2.5rem, 5vw, 3.8rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 1.2rem;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-desc {
+      color: var(--text-dim);
+      font-size: 1.05rem;
+      margin-bottom: 2rem;
+      max-width: 480px;
+    }
+
+    .hero-gallery {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    .hero-card {
+      position: relative;
+      height: 220px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: var(--bg-card);
+    }
+
+    .hero-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .hero-card:hover img { transform: scale(1.08); }
+
+    /* ===== PRODUCT SECTION (AS REQUESTED) ===== */
+    .showcase-section {
+      padding: 80px 2rem;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 3rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .tabs-wrapper {
+      display: flex;
+      gap: 0.6rem;
+      overflow-x: auto;
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+      justify-content: center;
+    }
+
+    .tab-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      color: var(--text-dim);
+      padding: 0.6rem 1.4rem;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .tab-btn.active, .tab-btn:hover {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent-soft);
+      box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+    }
+
+    .slider-container {
+      position: relative;
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .slides-wrapper {
+      display: flex;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .slide-item {
+      min-width: 100%;
+      padding: 2.5rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    @media (min-width: 900px) {
+      .slide-item { grid-template-columns: 1.2fr 1fr; }
+    }
+
+    .image-spot-container {
+      position: relative;
+      background: #040913;
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 360px;
+      border: 1px solid var(--line);
+    }
+
+    .image-spot-container img {
+      max-width: 100%;
+      max-height: 280px;
+      object-fit: contain;
+    }
+
+    /* Hotspot Styling */
+    .hotspot {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      background: var(--accent-soft);
+      border: 2px solid #fff;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 0 12px var(--accent-soft);
+      z-index: 10;
+    }
+
+    .hotspot::after {
+      content: '';
+      position: absolute;
+      inset: -6px;
+      border-radius: 50%;
+      border: 1px solid var(--accent-soft);
+      animation: pulse 1.8s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(0.8); opacity: 1; }
+      100% { transform: scale(1.8); opacity: 0; }
+    }
+
+    .hotspot-tooltip {
+      position: absolute;
+      bottom: 125%;
+      left: 50%;
+      transform: translateX(-50%) translateY(10px);
+      background: #020611;
+      color: #fff;
+      padding: 0.6rem 0.9rem;
+      border-radius: 8px;
+      border: 1px solid var(--accent-soft);
+      font-size: 0.78rem;
+      font-weight: 500;
+      white-space: nowrap;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.8);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: all 0.25s ease;
+      z-index: 20;
+    }
+
+    .hotspot-tooltip::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border-width: 6px;
+      border-style: solid;
+      border-color: var(--accent-soft) transparent transparent transparent;
+    }
+
+    .hotspot:hover .hotspot-tooltip {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .parts-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .parts-list h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+
+    .part-box {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      background: var(--bg-raise);
+      border: 1px solid var(--line);
+      padding: 1rem;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+    }
+
+    .part-box.highlight {
+      border-color: var(--accent-soft);
+      background: rgba(37, 99, 235, 0.2);
+      transform: translateX(6px);
+    }
+
+    .part-thumb {
+      width: 55px;
+      height: 55px;
+      background: #fff;
+      border-radius: 8px;
+      object-fit: contain;
+      padding: 6px;
+    }
+
+    .part-info h4 { font-size: 0.95rem; color: var(--text); }
+    .part-info p { font-size: 0.8rem; color: var(--text-dim); }
+
+    .nav-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(8, 17, 30, 0.8);
+      border: 1px solid var(--line);
+      color: #fff;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      transition: all 0.3s;
+    }
+
+    .nav-arrow:hover { background: var(--accent); }
+    .prev-arrow { left: 15px; }
+    .next-arrow { right: 15px; }
+
+    /* ===== GALLERY GRID SECTION ===== */
+    .visual-gallery {
+      padding: 60px 2rem 100px;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      height: 260px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-item:hover img { transform: scale(1.08); }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(8, 17, 30, 0.95) 0%, transparent 60%);
+      display: flex;
+      align-items: flex-end;
+      padding: 1.5rem;
+    }
+
+    .gallery-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 3rem 2rem;
+      text-align: center;
+      color: var(--text-dim);
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Minimal Header / Navbar -->
+  <header class="site-header">
+    <div class="nav-container">
+      <a href="#" class="brand-logo">
+        <span>APEX IGNITE</span>
+      </a>
+
+      <nav>
+        <ul class="main-nav">
+          <li class="menu-item">
+            <button class="menu-link" id="dropdownToggle">
+              Products Dropdown ▾
+            </button>
+            <ul class="sub-menu" id="subMenu" style="display: none; visibility: hidden;">
+              <li><a onclick="goToSlide(0)">AUTOMOTIVE LOCK COMPONENTS</a></li>
+              <li><a onclick="goToSlide(1)">AUTO ELECTRICAL ALTERNATOR PARTS</a></li>
+              <li><a onclick="goToSlide(2)">AUTO ELECTRICAL STARTER PARTS</a></li>
+              <li><a onclick="goToSlide(3)">WASHING MACHINE PARTS</a></li>
+            </ul>
+          </li>
+          <li><a href="#showcase" class="menu-link">Precision Parts</a></li>
+        </ul>
+      </nav>
+
+      <a href="mailto:info@apexignite.co.in" class="btn-contact">Get In Touch</a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div>
+      <div class="hero-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        ISO Certified Mold Engineering
+      </div>
+      <h1 class="hero-title">Precision Molded Plastic Components.</h1>
+      <p class="hero-desc">High-tolerance injection moulding for Automotive, Appliances, and Electrical Switchgears.</p>
+    </div>
+
+    <div class="hero-gallery">
+      <div class="hero-card"><img src="https://apexignite.co.in/images/products/product1.jpg" alt="Automotive Lock"></div>
+      <div class="hero-card"><img src="https://apexignite.co.in/images/products/product2.jpg" alt="Alternator Parts"></div>
+    </div>
+  </section>
+
+  <!-- Product Section with Auto Slider & Precision Tooltips -->
+  <section class="showcase-section" id="showcase">
+    <div class="section-header">
+      <h2 class="section-title">Interactive Component Inspection</h2>
+      <p style="color: var(--text-dim); font-size: 0.95rem;">Hover over the hotspots to reveal exact inner structural parts.</p>
+    </div>
+
+    <!-- Category Tabs -->
+    <div class="tabs-wrapper">
+      <button class="tab-btn active" onclick="goToSlide(0)">Automotive Lock</button>
+      <button class="tab-btn" onclick="goToSlide(1)">Alternator Parts</button>
+      <button class="tab-btn" onclick="goToSlide(2)">Starter Parts</button>
+      <button class="tab-btn" onclick="goToSlide(3)">Washing Machine Parts</button>
+    </div>
+
+    <!-- Auto Slider Box -->
+    <div class="slider-container" id="sliderContainer">
+      <button class="nav-arrow prev-arrow" onclick="prevSlide()">❮</button>
+      <button class="nav-arrow next-arrow" onclick="nextSlide()">❯</button>
+
+      <div class="slides-wrapper" id="slidesWrapper">
+
+        <!-- Slide 1 -->
+        <div class="slide-item">
+          <div class="image-spot-container">
+            <img src="https://apexignite.co.in/images/products/product1.jpg" alt="Lock">
+            
+            <div class="hotspot" style="top: 35%; left: 45%;" data-part="part-1-1">
+              <div class="hotspot-tooltip">Lock Shell Housing</div>
+            </div>
+            
+            <div class="hotspot" style="top: 60%; left: 65%;" data-part="part-1-2">
+              <div class="hotspot-tooltip">Ergonomic Handle</div>
+            </div>
+          </div>
+
+          <div class="parts-list">
+            <h3>Automotive Lock Components</h3>
+            <div class="part-box" id="part-1-1">
+              <img class="part-thumb" src="https://apexignite.co.in/images/products/product1.jpg" alt="Housing">
+              <div class="part-info">
+                <h4>Lock Shell Housing</h4>
+                <p>High precision thermoplastic injection molded casing</p>
+              </div>
+            </div>
+            <div class="part-box" id="part-1-2">
+              <img class="part-thumb" src="https://apexignite.co.in/images/products/product2.jpg" alt="Handle">
+              <div class="part-info">
+                <h4>Ergonomic Handle</h4>
+                <p>Heavy duty glass-filled nylon lock handle</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="slide-item">
+          <div class="image-spot-container">
+            <img src="https://apexignite.co.in/images/products/product2.jpg" alt="Alternator">
+            
+            <div class="hotspot" style="top: 40%; left: 50%;" data-part="part-2-1">
+              <div class="hotspot-tooltip">Brush Holder Assembly</div>
+            </div>
+          </div>
+
+          <div class="parts-list">
+            <h3>Auto Electrical Alternator Parts</h3>
+            <div class="part-box" id="part-2-1">
+              <img class="part-thumb" src="https://apexignite.co.in/images/products/product2.jpg" alt="Brush Holder">
+              <div class="part-info">
+                <h4>Brush Holder Assembly</h4>
+                <p>Heat resistant dielectric insulating shroud</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="slide-item">
+          <div class="image-spot-container">
+            <img src="https://apexignite.co.in/images/products/product3.jpg" alt="Starter Parts">
+            
+            <div class="hotspot" style="top: 50%; left: 40%;" data-part="part-3-1">
+              <div class="hotspot-tooltip">Solenoid Cover</div>
+            </div>
+          </div>
+
+          <div class="parts-list">
+            <h3>Auto Electrical Starter Parts</h3>
+            <div class="part-box" id="part-3-1">
+              <img class="part-thumb" src="https://apexignite.co.in/images/products/product3.jpg" alt="Cover">
+              <div class="part-info">
+                <h4>Solenoid Cover Assembly</h4>
+                <p>High impact strength molded protective casing</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="slide-item">
+          <div class="image-spot-container">
+            <img src="https://apexignite.co.in/images/products/product5.jpg" alt="Washing Machine">
+            
+            <div class="hotspot" style="top: 30%; left: 60%;" data-part="part-4-1">
+              <div class="hotspot-tooltip">Pulsator Impeller</div>
+            </div>
+          </div>
+
+          <div class="parts-list">
+            <h3>Washing Machine Parts</h3>
+            <div class="part-box" id="part-4-1">
+              <img class="part-thumb" src="https://apexignite.co.in/images/products/product5.jpg" alt="Impeller">
+              <div class="part-info">
+                <h4>Pulsator Impeller</h4>
+                <p>High torque water agitation component</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Visual Image Gallery -->
+  <section class="visual-gallery">
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="https://apexignite.co.in/images/products/product4.jpg" alt="Steering Parts">
+        <div class="gallery-overlay"><span class="gallery-title">Steering Components</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://apexignite.co.in/images/products/product6.jpg" alt="MCB Switchgear">
+        <div class="gallery-overlay"><span class="gallery-title">MCB & Switchgear</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://apexignite.co.in/images/products/product7.jpg" alt="Speedometer">
+        <div class="gallery-overlay"><span class="gallery-title">Speedometer Casing</span></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Apex Ignite. High Precision Plastic Molding Solutions.</p>
+  </footer>
+
+  <!-- Slider & Interactive JavaScript -->
+  <script>
+    let currentIndex = 0;
+    const slidesWrapper = document.getElementById('slidesWrapper');
+    const totalSlides = document.querySelectorAll('.slide-item').length;
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const sliderContainer = document.getElementById('sliderContainer');
+    let autoSlideInterval;
+
+    function updateSlider() {
+      slidesWrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+      tabBtns.forEach((btn, index) => {
+        btn.classList.toggle('active', index === currentIndex);
+      });
+    }
+
+    function goToSlide(index) {
+      currentIndex = index;
+      updateSlider();
+      resetTimer();
+    }
+
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % totalSlides;
+      updateSlider();
+    }
+
+    function prevSlide() {
+      currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+      updateSlider();
+    }
+
+    function startAutoSlide() {
+      autoSlideInterval = setInterval(nextSlide, 3500);
+    }
+
+    function resetTimer() {
+      clearInterval(autoSlideInterval);
+      startAutoSlide();
+    }
+
+    // Pause Auto Play when hovering over Slider
+    sliderContainer.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
+    sliderContainer.addEventListener('mouseleave', startAutoSlide);
+
+    // Hover Highlight linking Hotspots to Part Cards
+    document.querySelectorAll('.hotspot').forEach(dot => {
+      dot.addEventListener('mouseenter', function() {
+        const targetId = this.getAttribute('data-part');
+        const targetCard = document.getElementById(targetId);
+        if (targetCard) targetCard.classList.add('highlight');
+      });
+
+      dot.addEventListener('mouseleave', function() {
+        const targetId = this.getAttribute('data-part');
+        const targetCard = document.getElementById(targetId);
+        if (targetCard) targetCard.classList.remove('highlight');
+      });
+    });
+
+    // Submenu Toggle
+    const dropdownToggle = document.getElementById('dropdownToggle');
+    const subMenu = document.getElementById('subMenu');
+
+    dropdownToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      subMenu.classList.toggle('show');
+    });
+
+    document.addEventListener('click', () => subMenu.classList.remove('show'));
+
+    startAutoSlide();
+  </script>
+
+</body>
+</html>

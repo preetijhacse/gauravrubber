@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaurav Rubber Udyog - Modern About Us & Industrial Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#fff7ed',
+                            100: '#ffedd5',
+                            500: '#f97316',
+                            600: '#ea580c',
+                            700: '#c2410c',
+                            900: '#7c2d12',
+                        },
+                        industrial: {
+                            800: '#1e293b',
+                            900: '#0f172a',
+                            950: '#020617',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        display: ['"Space Grotesk"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .dark .glass-panel {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 50%, #f43f5e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .rubber-grid-pattern {
+            background-image: radial-gradient(rgba(249, 115, 22, 0.15) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-industrial-950 dark:text-slate-100 font-sans transition-colors duration-300 antialiased selection:bg-brand-500 selection:text-white">
+
+    <header class="sticky top-0 z-50 glass-panel border-b border-slate-200 dark:border-slate-800/80 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-500 to-amber-600 flex items-center justify-center text-white shadow-lg shadow-brand-500/20 group-hover:scale-105 transition-transform">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
+                    </svg>
+                </div>
+                <div>
+                    <span class="font-display font-extrabold text-xl tracking-tight text-slate-900 dark:text-white block">GAURAV RUBBER</span>
+                    <span class="text-xs uppercase tracking-widest text-brand-600 dark:text-brand-500 font-bold">Udyog Manufacturing</span>
+                </div>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-600 dark:text-slate-300">
+                <a href="#about-hero" class="hover:text-brand-500 transition-colors">About Us</a>
+                <a href="#journey" class="hover:text-brand-500 transition-colors">Our Journey</a>
+                <a href="#lab-simulator" class="hover:text-brand-500 transition-colors">Polymer Lab</a>
+                <a href="#capabilities" class="hover:text-brand-500 transition-colors">Capabilities</a>
+                <a href="#leadership" class="hover:text-brand-500 transition-colors">Leadership</a>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                <button id="themeToggle" class="p-2.5 rounded-xl bg-slate-200/60 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 transition-colors" title="Toggle Theme">
+                    <svg id="themeIcon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                    </svg>
+                </button>
+                <button onclick="openModal('rfqModal')" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-semibold text-sm shadow-lg shadow-brand-500/25 transition-all transform hover:-translate-y-0.5">
+                    <span>Request Technical Quote</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section id="about-hero" class="relative overflow-hidden pt-12 pb-24 md:pt-20 md:pb-32 rubber-grid-pattern">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-slate-50/50 dark:via-industrial-950/80 to-slate-50 dark:to-industrial-950 pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-500/10 text-brand-600 dark:text-brand-400 border border-brand-500/20 text-xs font-bold uppercase tracking-wider mb-6">
+                <span class="w-2 h-2 rounded-full bg-brand-500 animate-ping"></span>
+                30+ Years of Manufacturing Excellence
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 space-y-6">
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold font-display leading-[1.1] text-slate-900 dark:text-white">
+                        Pioneering Precision in <span class="gradient-text">Polymer & Rubber</span> Engineering.
+                    </h1>
+                    <p class="text-lg text-slate-600 dark:text-slate-300 max-w-2xl leading-relaxed">
+                        Gaurav Rubber Udyog is a premier manufacturer and exporter of custom-molded rubber components, automotive oil seals, extruded profiles, and high-performance industrial gaskets. We transform raw elastomeric compounds into mission-critical solutions for global OEMs.
+                    </p>
+
+                    <div class="flex flex-wrap gap-4 pt-2">
+                        <a href="#capabilities" class="px-6 py-3.5 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold hover:bg-slate-800 dark:hover:bg-slate-100 transition-all shadow-md">
+                            Explore Capabilities
+                        </a>
+                        <a href="#lab-simulator" class="px-6 py-3.5 rounded-xl border border-slate-300 dark:border-slate-700 font-semibold hover:border-brand-500 dark:hover:border-brand-500 transition-colors flex items-center gap-2">
+                            <svg class="w-5 h-5 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                            Polymer Material Finder
+                        </a>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 relative">
+                    <div class="relative mx-auto rounded-3xl overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-800 bg-slate-900">
+                        <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80" alt="Industrial Rubber Molded Components Lab" class="w-full h-96 object-cover opacity-85 hover:scale-105 transition-transform duration-700" onerror="this.src='https://placehold.co/800x600/1e293b/ffffff?text=Gaurav+Rubber+Facility'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 right-6 p-4 rounded-2xl glass-panel border border-white/20">
+                            <div class="flex items-center justify-between text-slate-900 dark:text-white">
+                                <div>
+                                    <p class="text-xs uppercase font-bold tracking-wider text-brand-500">Facility Highlight</p>
+                                    <p class="font-bold text-sm">Automated Vulcanization & Mixing Line</p>
+                                </div>
+                                <span class="px-2.5 py-1 rounded-md bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-bold">IATF 16949</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dynamic Metric Stat Cards -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mt-16">
+                <div class="p-6 rounded-2xl glass-panel border border-slate-200/80 dark:border-slate-800 hover:border-brand-500/50 transition-all">
+                    <div class="text-3xl md:text-4xl font-extrabold font-display text-brand-500 mb-1" id="stat-1">30+</div>
+                    <div class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Years Industry Experience</div>
+                </div>
+                <div class="p-6 rounded-2xl glass-panel border border-slate-200/80 dark:border-slate-800 hover:border-brand-500/50 transition-all">
+                    <div class="text-3xl md:text-4xl font-extrabold font-display text-slate-900 dark:text-white mb-1" id="stat-2">12,000+</div>
+                    <div class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Metric Tons Processed/Yr</div>
+                </div>
+                <div class="p-6 rounded-2xl glass-panel border border-slate-200/80 dark:border-slate-800 hover:border-brand-500/50 transition-all">
+                    <div class="text-3xl md:text-4xl font-extrabold font-display text-brand-500 mb-1" id="stat-3">650+</div>
+                    <div class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Custom Die Profiles</div>
+                </div>
+                <div class="p-6 rounded-2xl glass-panel border border-slate-200/80 dark:border-slate-800 hover:border-brand-500/50 transition-all">
+                    <div class="text-3xl md:text-4xl font-extrabold font-display text-slate-900 dark:text-white mb-1" id="stat-4">99.8%</div>
+                    <div class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Zero-Defect Rate</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="journey" class="py-20 bg-slate-100/70 dark:bg-industrial-900/50 border-y border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-xs font-extrabold text-brand-500 uppercase tracking-widest mb-2">Our Story & DNA</h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold font-display text-slate-900 dark:text-white">Driven by Innovation, Defined by Precision</h3>
+                <p class="text-slate-600 dark:text-slate-400 mt-3 text-base">Explore how three decades of relentless research and investment in material science made us India's most trusted polymer partner.</p>
+            </div>
+
+            <!-- Interactive Tab System -->
+            <div class="max-w-4xl mx-auto">
+                <div class="flex flex-wrap justify-center gap-2 p-1.5 rounded-2xl bg-slate-200/80 dark:bg-slate-800 mb-8" role="tablist">
+                    <button onclick="switchTab('vision')" id="tab-vision" class="story-tab active-tab px-6 py-3 rounded-xl font-bold text-sm transition-all bg-brand-500 text-white shadow-md">
+                        Vision & Mission
+                    </button>
+                    <button onclick="switchTab('milestones')" id="tab-milestones" class="story-tab px-6 py-3 rounded-xl font-bold text-sm text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-all">
+                        Company Milestones
+                    </button>
+                    <button onclick="switchTab('quality')" id="tab-quality" class="story-tab px-6 py-3 rounded-xl font-bold text-sm text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-all">
+                        Quality Imperative
+                    </button>
+                    <button onclick="switchTab('esg')" id="tab-esg" class="story-tab px-6 py-3 rounded-xl font-bold text-sm text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-all">
+                        ESG & Sustainability
+                    </button>
+                </div>
+
+                <!-- Tab 1: Vision -->
+                <div id="content-vision" class="tab-content block p-8 rounded-3xl glass-panel border border-slate-200 dark:border-slate-800">
+                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                        <div class="space-y-4">
+                            <h4 class="text-2xl font-bold text-slate-900 dark:text-white">Our Core Purpose</h4>
+                            <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                                To engineer high-durability polymer compounds that solve critical sealing, vibration, and fluid-handling challenges across automotive, aerospace, railway, and heavy industrial machinery worldwide.
+                            </p>
+                            <ul class="space-y-2.5 text-sm font-semibold text-slate-700 dark:text-slate-300">
+                                <li class="flex items-center gap-3">
+                                    <span class="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-500 flex items-center justify-center text-xs font-bold">✓</span>
+                                    In-house custom compound formulation for extreme environments
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <span class="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-500 flex items-center justify-center text-xs font-bold">✓</span>
+                                    Rapid prototyping & 3D mold development within 7 days
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <span class="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-500 flex items-center justify-center text-xs font-bold">✓</span>
+                                    Global export compliance across 22+ countries
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="bg-slate-900 p-6 rounded-2xl text-white space-y-4 relative overflow-hidden">
+                            <div class="absolute -right-8 -bottom-8 w-32 h-32 bg-brand-500/20 rounded-full blur-2xl"></div>
+                            <span class="text-brand-500 font-extrabold uppercase text-xs tracking-widest">Leadership Promise</span>
+                            <blockquote class="italic text-slate-200 text-sm leading-relaxed">
+                                "We don't just supply rubber parts; we co-engineer reliability. If it holds pressure, dampens shock, or prevents friction, Gaurav Rubber guarantees perfection."
+                            </blockquote>
+                            <p class="text-xs font-bold text-slate-400">— Managing Director, Gaurav Rubber Udyog</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 2: Milestones -->
+                <div id="content-milestones" class="tab-content hidden p-8 rounded-3xl glass-panel border border-slate-200 dark:border-slate-800">
+                    <div class="space-y-6">
+                        <h4 class="text-2xl font-bold text-slate-900 dark:text-white mb-6">Key Growth Milestones</h4>
+                        <div class="relative border-l-2 border-brand-500/30 pl-6 space-y-8 ml-2">
+                            <div class="relative group">
+                                <div class="absolute -left-[31px] top-0 w-4 h-4 rounded-full bg-brand-500 ring-4 ring-slate-100 dark:ring-industrial-950"></div>
+                                <span class="text-xs font-extrabold text-brand-500 uppercase tracking-widest">1995 — Foundation</span>
+                                <h5 class="font-bold text-slate-900 dark:text-white text-lg">Inception in NCR Industrial Belt</h5>
+                                <p class="text-sm text-slate-600 dark:text-slate-400">Started as a modest rubber pressing unit serving regional electrical pump manufacturers.</p>
+                            </div>
+                            <div class="relative group">
+                                <div class="absolute -left-[31px] top-0 w-4 h-4 rounded-full bg-brand-500 ring-4 ring-slate-100 dark:ring-industrial-950"></div>
+                                <span class="text-xs font-extrabold text-brand-500 uppercase tracking-widest">2008 — Auto OEM Expansion</span>
+                                <h5 class="font-bold text-slate-900 dark:text-white text-lg">ISO & Automotive Accreditation</h5>
+                                <p class="text-sm text-slate-600 dark:text-slate-400">Commissioned automated kneader mixing lines and earned Tier-1 automotive vendor status.</p>
+                            </div>
+                            <div class="relative group">
+                                <div class="absolute -left-[31px] top-0 w-4 h-4 rounded-full bg-brand-500 ring-4 ring-slate-100 dark:ring-industrial-950"></div>
+                                <span class="text-xs font-extrabold text-brand-500 uppercase tracking-widest">2018 — Global Export Division</span>
+                                <h5 class="font-bold text-slate-900 dark:text-white text-lg">IATF 16949 & International Supply</h5>
+                                <p class="text-sm text-slate-600 dark:text-slate-400">Expanded exports of Viton, Silicone, and EPDM gaskets to Europe, UAE, and North America.</p>
+                            </div>
+                            <div class="relative group">
+                                <div class="absolute -left-[31px] top-0 w-4 h-4 rounded-full bg-brand-500 ring-4 ring-slate-100 dark:ring-industrial-950"></div>
+                                <span class="text-xs font-extrabold text-brand-500 uppercase tracking-widest">2024 — Industry 4.0 Lab</span>
+                                <h5 class="font-bold text-slate-900 dark:text-white text-lg">Automated Rheometer QA & Green Recycling</h5>
+                                <p class="text-sm text-slate-600 dark:text-slate-400">Integrated computer-controlled vulcanization presses and zero-emission compounding.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 3: Quality -->
+                <div id="content-quality" class="tab-content hidden p-8 rounded-3xl glass-panel border border-slate-200 dark:border-slate-800">
+                    <h4 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">Zero-Defect Quality Assurance</h4>
+                    <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
+                        Every batch undergoes rigorous chemical and mechanical testing using Moving Die Rheometers (MDR), Tensile Testers, Ozone Resistance Chambers, and Specific Gravity Meters.
+                    </p>
+                    <div class="grid sm:grid-cols-3 gap-4">
+                        <div class="p-4 rounded-2xl bg-slate-200/50 dark:bg-slate-800/60 border border-slate-300 dark:border-slate-700">
+                            <span class="text-xs font-bold text-brand-500 uppercase">MDR Rheology</span>
+                            <p class="font-bold text-slate-900 dark:text-white mt-1">Cure Curve Precision</p>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-slate-200/50 dark:bg-slate-800/60 border border-slate-300 dark:border-slate-700">
+                            <span class="text-xs font-bold text-brand-500 uppercase">Aging Tests</span>
+                            <p class="font-bold text-slate-900 dark:text-white mt-1">Extreme Temp Simulation</p>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-slate-200/50 dark:bg-slate-800/60 border border-slate-300 dark:border-slate-700">
+                            <span class="text-xs font-bold text-brand-500 uppercase">Dimension Scan</span>
+                            <p class="font-bold text-slate-900 dark:text-white mt-1">Optical Microscopic QA</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 4: ESG -->
+                <div id="content-esg" class="tab-content hidden p-8 rounded-3xl glass-panel border border-slate-200 dark:border-slate-800">
+                    <h4 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">Eco-Friendly Rubber Manufacturing</h4>
+                    <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
+                        We are committed to reducing the carbon footprint of elastomeric processing. Our facility incorporates 300kW rooftop solar power and closed-loop water cooling circuits.
+                    </p>
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-500 flex items-center justify-center shrink-0 font-bold">☀</div>
+                            <div>
+                                <h5 class="font-bold text-slate-900 dark:text-white">Solar Powered Operations</h5>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">45% of plant energy supplied by renewable solar microgrid.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-500 flex items-center justify-center shrink-0 font-bold">♻</div>
+                            <div>
+                                <h5 class="font-bold text-slate-900 dark:text-white">Reclaimed Polymer Program</h5>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Zero process rubber waste going to landfills through devulcanization.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="lab-simulator" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="px-3.5 py-1.5 rounded-full bg-brand-500/10 text-brand-600 dark:text-brand-400 text-xs font-bold uppercase tracking-wider">Interactive R&D Lab Tool</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-slate-900 dark:text-white mt-3">Polymer Compound Selector</h2>
+                <p class="text-slate-600 dark:text-slate-400 mt-2">Select a rubber compound to evaluate thermal limits, chemical resistance, and ideal industrial applications.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-8 items-center glass-panel p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800">
+                <!-- Material Selector Left Column -->
+                <div class="lg:col-span-5 space-y-3">
+                    <label class="text-xs font-extrabold text-slate-400 uppercase tracking-widest block mb-2">Choose Rubber Elastomer:</label>
+                    <button onclick="selectPolymer('epdm')" id="btn-epdm" class="polymer-btn w-full p-4 rounded-2xl border text-left flex items-center justify-between transition-all border-brand-500 bg-brand-500/10 text-brand-600 dark:text-brand-400">
+                        <div>
+                            <div class="font-bold text-base">EPDM Rubber</div>
+                            <div class="text-xs text-slate-500 dark:text-slate-400">Ethylene Propylene Diene Monomer</div>
+                        </div>
+                        <span class="text-xs font-bold px-2.5 py-1 rounded-md bg-brand-500/20">Weather & Steam</span>
+                    </button>
+
+                    <button onclick="selectPolymer('nbr')" id="btn-nbr" class="polymer-btn w-full p-4 rounded-2xl border border-slate-200 dark:border-slate-800 text-left flex items-center justify-between hover:border-slate-400 transition-all">
+                        <div>
+                            <div class="font-bold text-base text-slate-900 dark:text-white">NBR (Nitrile)</div>
+                            <div class="text-xs text-slate-500 dark:text-slate-400">Acrylonitrile Butadiene</div>
+                        </div>
+                        <span class="text-xs font-bold px-2.5 py-1 rounded-md bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Oil & Fuel</span>
+                    </button>
+
+                    <button onclick="selectPolymer('viton')" id="btn-viton" class="polymer-btn w-full p-4 rounded-2xl border border-slate-200 dark:border-slate-800 text-left flex items-center justify-between hover:border-slate-400 transition-all">
+                        <div>
+                            <div class="font-bold text-base text-slate-900 dark:text-white">FKM / Viton®</div>
+                            <div class="text-xs text-slate-500 dark:text-slate-400">Fluoroelastomer</div>
+                        </div>
+                        <span class="text-xs font-bold px-2.5 py-1 rounded-md bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">High Temp & Chemical</span>
+                    </button>
+
+                    <button onclick="selectPolymer('silicone')" id="btn-silicone" class="polymer-btn w-full p-4 rounded-2xl border border-slate-200 dark:border-slate-800 text-left flex items-center justify-between hover:border-slate-400 transition-all">
+                        <div>
+                            <div class="font-bold text-base text-slate-900 dark:text-white">Silicone (VMQ)</div>
+                            <div class="text-xs text-slate-500 dark:text-slate-400">Polysiloxane Elastomer</div>
+                        </div>
+                        <span class="text-xs font-bold px-2.5 py-1 rounded-md bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Food Grade & Temp</span>
+                    </button>
+                </div>
+
+                <!-- Live Performance Meters Right Column -->
+                <div class="lg:col-span-7 bg-slate-900 text-white p-6 sm:p-8 rounded-2xl space-y-6">
+                    <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+                        <div>
+                            <h3 id="poly-name" class="text-2xl font-bold text-brand-500">EPDM Rubber</h3>
+                            <p id="poly-full" class="text-xs text-slate-400">Ideal for outdoor exposure, weather seals, and automotive radiator hoses.</p>
+                        </div>
+                        <span id="poly-hardness" class="px-3 py-1.5 rounded-lg bg-slate-800 font-mono text-xs font-bold text-amber-400">Shore A: 40 - 85</span>
+                    </div>
+
+                    <!-- Gauges & Progress Sliders -->
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between text-xs font-bold mb-1">
+                                <span class="text-slate-400">Temperature Tolerance Range</span>
+                                <span id="poly-temp-val" class="text-brand-400">-40°C to +150°C</span>
+                            </div>
+                            <div class="h-3 w-full bg-slate-800 rounded-full overflow-hidden">
+                                <div id="poly-temp-bar" class="h-full bg-gradient-to-r from-blue-500 via-amber-500 to-red-500 transition-all duration-500" style="width: 75%;"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-xs font-bold mb-1">
+                                <span class="text-slate-400">Oil & Fuel Resistance</span>
+                                <span id="poly-oil-val" class="text-emerald-400">Moderate / Low</span>
+                            </div>
+                            <div class="h-3 w-full bg-slate-800 rounded-full overflow-hidden">
+                                <div id="poly-oil-bar" class="h-full bg-emerald-500 transition-all duration-500" style="width: 40%;"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-xs font-bold mb-1">
+                                <span class="text-slate-400">UV, Ozone & Weatherability</span>
+                                <span id="poly-uv-val" class="text-emerald-400">Excellent (10/10)</span>
+                            </div>
+                            <div class="h-3 w-full bg-slate-800 rounded-full overflow-hidden">
+                                <div id="poly-uv-bar" class="h-full bg-brand-500 transition-all duration-500" style="width: 98%;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-2 border-t border-slate-800">
+                        <span class="text-xs font-bold uppercase text-slate-500 block mb-2">Recommended Applications:</span>
+                        <div id="poly-apps" class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 rounded-full bg-slate-800 text-xs font-semibold">Automotive Door Seals</span>
+                            <span class="px-3 py-1 rounded-full bg-slate-800 text-xs font-semibold">HVAC Gaskets</span>
+                            <span class="px-3 py-1 rounded-full bg-slate-800 text-xs font-semibold">Window Glazing Channels</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="capabilities" class="py-20 bg-slate-100/70 dark:bg-industrial-900/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-extrabold text-brand-500 uppercase tracking-widest mb-2">Plant Capabilities</h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold font-display text-slate-900 dark:text-white">State-of-the-Art Production Facility</h3>
+                <p class="text-slate-600 dark:text-slate-400 mt-2">Equipped with heavy hydraulic compression molding, cold-feed continuous extrusion, and automated cryo-deflashing lines.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Capability Card 1 -->
+                <div class="p-8 rounded-3xl glass-panel border border-slate-200 dark:border-slate-800 hover:shadow-xl transition-all group">
+                    <div class="w-14 h-14 rounded-2xl bg-brand-500/10 text-brand-500 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Compression & Transfer Molding</h4>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                        Tonnage range from 50 Tons to 500 Tons PLC-controlled hydraulic presses capable of molding high-precision seals, bellows, and rubber-to-metal bonded mounts.
+                    </p>
+                </div>
+
+                <!-- Capability Card 2 -->
+                <div class="p-8 rounded-3xl glass-panel border border-slate-200 dark:border-slate-800 hover:shadow-xl transition-all group">
+                    <div class="w-14 h-14 rounded-2xl bg-brand-500/10 text-brand-500 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Continuous Profile Extrusion</h4>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                        Microwave continuous vulcanization (LCM/HAV) lines for dual-durometer sponge and solid EPDM profiles, co-extruded with metal carrier strips.
+                    </p>
+                </div>
+
+                <!-- Capability Card 3 -->
+                <div class="p-8 rounded-3xl glass-panel border border-slate-200 dark:border-slate-800 hover:shadow-xl transition-all group">
+                    <div class="w-14 h-14 rounded-2xl bg-brand-500/10 text-brand-500 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 dark:text-white mb-2">In-House Tooling & Die Lab</h4>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                        High-precision CNC wire-cut machines and CAD/CAM software to manufacture multi-cavity hardened steel molds with 0.01mm tolerance accuracy.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="leadership" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-extrabold text-brand-500 uppercase tracking-widest mb-2">Corporate Leadership</h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold font-display text-slate-900 dark:text-white">Guided by Polymer Industry Veterans</h3>
+                <p class="text-slate-600 dark:text-slate-400 mt-2">Combining chemical engineering expertise with modern lean manufacturing principles.</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Leader 1 -->
+                <div class="p-6 rounded-3xl glass-panel border border-slate-200 dark:border-slate-800 text-center">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80" alt="Founder & MD" class="w-24 h-24 rounded-2xl object-cover mx-auto mb-4 border-2 border-brand-500 shadow-md">
+                    <h4 class="font-bold text-lg text-slate-900 dark:text-white">Gaurav Sharma</h4>
+                    <p class="text-xs text-brand-500 font-semibold mb-3">Founder & Managing Director</p>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">30+ years leading elastomeric product development and expanding international automotive OEM partnerships.</p>
+                </div>
+
+                <!-- Leader 2 -->
+                <div class="p-6 rounded-3xl glass-panel border border-slate-200 dark:border-slate-800 text-center">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80" alt="Head of R&D" class="w-24 h-24 rounded-2xl object-cover mx-auto mb-4 border-2 border-brand-500 shadow-md">
+                    <h4 class="font-bold text-lg text-slate-900 dark:text-white">Dr. Ananya Verma</h4>
+                    <p class="text-xs text-brand-500 font-semibold mb-3">Chief Polymer Chemist (R&D)</p>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Ph.D. in Polymer Science; specialist in Viton / Fluorocarbon compound formulation for extreme pressure environments.</p>
+                </div>
+
+                <!-- Leader 3 -->
+                <div class="p-6 rounded-3xl glass-panel border border-slate-200 dark:border-slate-800 text-center sm:col-span-2 lg:col-span-1">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80" alt="Head of Operations" class="w-24 h-24 rounded-2xl object-cover mx-auto mb-4 border-2 border-brand-500 shadow-md">
+                    <h4 class="font-bold text-lg text-slate-900 dark:text-white">Rajesh Malhotra</h4>
+                    <p class="text-xs text-brand-500 font-semibold mb-3">VP of Manufacturing & QA</p>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Oversees Six Sigma implementation, automated vulcanization, and zero-defect quality systems.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-gradient-to-r from-brand-600 to-amber-600 text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <h2 class="text-3xl sm:text-4xl font-extrabold font-display mb-4">Have a Custom Rubber Component Requirement?</h2>
+            <p class="text-brand-100 max-w-2xl mx-auto mb-8 text-base">Send us your 2D/3D CAD drawings or material specs. Our technical team delivers quote estimates within 24 hours.</p>
+            <button onclick="openModal('rfqModal')" class="px-8 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm shadow-2xl transition-all transform hover:-translate-y-1">
+                Upload Specs & Request RFQ
+            </button>
+        </div>
+    </section>
+
+    <!-- Modal Dialog for RFQ -->
+    <div id="rfqModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-sm">
+        <div class="bg-white dark:bg-industrial-900 rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-200 dark:border-slate-800 relative">
+            <button onclick="closeModal('rfqModal')" class="absolute top-5 right-5 text-slate-400 hover:text-slate-600 dark:hover:text-white text-lg font-bold">✕</button>
+            <h3 class="text-2xl font-bold font-display text-slate-900 dark:text-white mb-1">Request Technical RFQ</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mb-6">Fill out your component requirements for a fast technical estimate.</p>
+
+            <form onsubmit="handleFormSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="text-xs font-bold text-slate-700 dark:text-slate-300 block mb-1">Company / Contact Name</label>
+                    <input type="text" required placeholder="e.g. Acme Auto Components" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm focus:ring-2 focus:ring-brand-500 outline-none dark:text-white">
+                </div>
+                <div>
+                    <label class="text-xs font-bold text-slate-700 dark:text-slate-300 block mb-1">Work Email</label>
+                    <input type="email" required placeholder="engineering@company.com" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm focus:ring-2 focus:ring-brand-500 outline-none dark:text-white">
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="text-xs font-bold text-slate-700 dark:text-slate-300 block mb-1">Polymer Material</label>
+                        <select class="w-full px-3 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm dark:text-white">
+                            <option>EPDM</option>
+                            <option>NBR (Nitrile)</option>
+                            <option>Silicone</option>
+                            <option>FKM / Viton</option>
+                            <option>Neoprene</option>
+                            <option>Custom Blend</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="text-xs font-bold text-slate-700 dark:text-slate-300 block mb-1">Estimated Annual Qty</label>
+                        <input type="text" placeholder="e.g. 50,000 units" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm focus:ring-2 focus:ring-brand-500 outline-none dark:text-white">
+                    </div>
+                </div>
+                <div>
+                    <label class="text-xs font-bold text-slate-700 dark:text-slate-300 block mb-1">Component Specs & Application</label>
+                    <textarea rows="3" placeholder="Specify dimensions, operating temperature range, fluid exposure..." class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm focus:ring-2 focus:ring-brand-500 outline-none dark:text-white"></textarea>
+                </div>
+                <button type="submit" class="w-full py-3.5 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-bold text-sm shadow-lg shadow-brand-500/30 transition-all">
+                    Submit Inquiry to R&D Team
+                </button>
+            </form>
+            <div id="toastMessage" class="hidden mt-4 p-3 rounded-xl bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-bold text-center">
+                ✓ Inquiry received! Our polymer engineer will contact you shortly.
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-industrial-950 text-slate-400 text-sm border-t border-slate-800 pt-16 pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-10">
+            <div class="space-y-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-lg bg-brand-500 flex items-center justify-center text-white font-extrabold text-sm">G</div>
+                    <span class="font-display font-extrabold text-lg text-white">GAURAV RUBBER UDYOG</span>
+                </div>
+                <p class="text-xs text-slate-500 leading-relaxed">
+                    Manufacturer & Exporter of precision molded rubber seals, extruded weatherstripping profiles, and high-temp silicone components.
+                </p>
+                <div class="text-xs text-slate-500">
+                    <p class="font-bold text-slate-300">Certifications:</p>
+                    <p>IATF 16949:2016 | ISO 9001:2015 | RoHS Compliant</p>
+                </div>
+            </div>
+
+            <div>
+                <h5 class="font-bold text-white mb-4 text-xs uppercase tracking-wider">Quick Navigation</h5>
+                <ul class="space-y-2.5 text-xs">
+                    <li><a href="#about-hero" class="hover:text-brand-500 transition-colors">About Us</a></li>
+                    <li><a href="#journey" class="hover:text-brand-500 transition-colors">Our History & Milestones</a></li>
+                    <li><a href="#lab-simulator" class="hover:text-brand-500 transition-colors">Polymer Compound Finder</a></li>
+                    <li><a href="#capabilities" class="hover:text-brand-500 transition-colors">Plant & Machinery</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h5 class="font-bold text-white mb-4 text-xs uppercase tracking-wider">Products & Elastomers</h5>
+                <ul class="space-y-2.5 text-xs">
+                    <li><a href="#" class="hover:text-brand-500 transition-colors">EPDM Radiator Hoses & Seals</a></li>
+                    <li><a href="#" class="hover:text-brand-500 transition-colors">Nitrile (NBR) Oil Seals & O-Rings</a></li>
+                    <li><a href="#" class="hover:text-brand-500 transition-colors">Viton High-Chemical Gaskets</a></li>
+                    <li><a href="#" class="hover:text-brand-500 transition-colors">Silicone Food-Grade Tubing</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h5 class="font-bold text-white mb-4 text-xs uppercase tracking-wider">Plant Headquarters</h5>
+                <p class="text-xs text-slate-400 mb-2">Industrial Development Area, Sector 24, Faridabad / NCR, Haryana, India</p>
+                <p class="text-xs text-slate-400 mb-1"><span class="text-slate-200 font-bold">Email:</span> info@gauravrubber.com</p>
+                <p class="text-xs text-slate-400"><span class="text-slate-200 font-bold">Phone:</span> +91 (0129) 400-RUBBER</p>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-8 border-t border-slate-900 text-center text-xs text-slate-600">
+            © 2026 Gaurav Rubber Udyog. All Rights Reserved. Precision Engineered in India.
+        </div>
+    </footer>
+
+    <!-- Interactive Logic Script -->
+    <script>
+        
+        // Theme Toggle Logic
+        const themeToggleBtn = document.getElementById('themeToggle');
+        themeToggleBtn.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+        });
+
+        // Set default theme to dark for premium modern look
+        document.documentElement.classList.add('dark');
+
+        // Tab Switcher Logic
+        function switchTab(tabKey) {
+            document.querySelectorAll('.story-tab').forEach(btn => {
+                btn.classList.remove('bg-brand-500', 'text-white', 'shadow-md');
+                btn.classList.add('text-slate-600', 'dark:text-slate-300');
+            });
+
+            const activeBtn = document.getElementById(`tab-${tabKey}`);
+            if (activeBtn) {
+                activeBtn.classList.add('bg-brand-500', 'text-white', 'shadow-md');
+                activeBtn.classList.remove('text-slate-600', 'dark:text-slate-300');
+            }
+
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+
+            const targetContent = document.getElementById(`content-${tabKey}`);
+            if (targetContent) {
+                targetContent.classList.remove('hidden');
+            }
+        }
+
+        // Polymer Simulator Data
+        const polymerData = {
+            epdm: {
+                name: "EPDM Rubber (Ethylene Propylene)",
+                full: "Unmatched UV, weathering, and steam resistance. Ideal for automotive door seals, coolant hoses, and outdoor enclosures.",
+                hardness: "Shore A: 40 - 85",
+                tempRange: "-40°C to +150°C",
+                tempWidth: "75%",
+                oilRes: "Moderate / Low",
+                oilWidth: "35%",
+                uvRes: "Excellent (10/10)",
+                uvWidth: "98%",
+                apps: ["Automotive Door Weatherstrips", "Radiator Hoses", "HVAC Flange Seals", "Solar Panel Gaskets"]
+            },
+            nbr: {
+                name: "NBR (Nitrile Butadiene)",
+                full: "Exceptional resistance to petroleum oils, diesel, mineral grease, and hydraulic fluids.",
+                hardness: "Shore A: 50 - 90",
+                tempRange: "-30°C to +120°C",
+                tempWidth: "60%",
+                oilRes: "Superior (10/10)",
+                oilWidth: "95%",
+                uvRes: "Fair (Requires Anti-ozonant)",
+                uvWidth: "50%",
+                apps: ["Engine Oil Seals", "Fuel Line Grommets", "Hydraulic Cylinder Packings", "O-Rings"]
+            },
+            viton: {
+                name: "FKM / Viton® Fluorocarbon",
+                full: "Premium elastomer for aggressive acids, aromatic hydrocarbons, and continuous high-temperature exposure.",
+                hardness: "Shore A: 60 - 90",
+                tempRange: "-20°C to +230°C",
+                tempWidth: "95%",
+                oilRes: "Maximum Resistance",
+                oilWidth: "99%",
+                uvRes: "Outstanding (10/10)",
+                uvWidth: "95%",
+                apps: ["Aerospace Fuel Seals", "Chemical Pump Diaphragms", "High-Temp Engine Gaskets"]
+            },
+            silicone: {
+                name: "Silicone (Polysiloxane)",
+                full: "Inert, non-reactive material maintaining elasticity across wide thermal extremes. FDA Food Grade compliant.",
+                hardness: "Shore A: 30 - 80",
+                tempRange: "-60°C to +220°C",
+                tempWidth: "90%",
+                oilRes: "Moderate",
+                oilWidth: "45%",
+                uvRes: "Excellent",
+                uvWidth: "92%",
+                apps: ["Medical & Pharmaceutical Tubing", "Food Equipment Seals", "High Voltage Cable Insulators"]
+            }
+        };
+
+        function selectPolymer(key) {
+            const data = polymerData[key];
+            if (!data) return;
+
+            // Highlight button
+            document.querySelectorAll('.polymer-btn').forEach(btn => {
+                btn.classList.remove('border-brand-500', 'bg-brand-500/10', 'text-brand-600', 'dark:text-brand-400');
+                btn.classList.add('border-slate-200', 'dark:border-slate-800');
+            });
+
+            const selectedBtn = document.getElementById(`btn-${key}`);
+            if (selectedBtn) {
+                selectedBtn.classList.add('border-brand-500', 'bg-brand-500/10', 'text-brand-600', 'dark:text-brand-400');
+                selectedBtn.classList.remove('border-slate-200', 'dark:border-slate-800');
+            }
+
+            // Update content with smooth DOM transitions
+            document.getElementById('poly-name').textContent = data.name;
+            document.getElementById('poly-full').textContent = data.full;
+            document.getElementById('poly-hardness').textContent = data.hardness;
+
+            document.getElementById('poly-temp-val').textContent = data.tempRange;
+            document.getElementById('poly-temp-bar').style.width = data.tempWidth;
+
+            document.getElementById('poly-oil-val').textContent = data.oilRes;
+            document.getElementById('poly-oil-bar').style.width = data.oilWidth;
+
+            document.getElementById('poly-uv-val').textContent = data.uvRes;
+            document.getElementById('poly-uv-bar').style.width = data.uvWidth;
+
+            const appsContainer = document.getElementById('poly-apps');
+            appsContainer.innerHTML = '';
+            data.apps.forEach(app => {
+                const tag = document.createElement('span');
+                tag.className = 'px-3 py-1 rounded-full bg-slate-800 text-xs font-semibold text-slate-200';
+                tag.textContent = app;
+                appsContainer.appendChild(tag);
+            });
+        }
+
+        // Modal triggers
+        function openModal(id) {
+            document.getElementById(id).classList.remove('hidden');
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.add('hidden');
+            const toast = document.getElementById('toastMessage');
+            if (toast) toast.classList.add('hidden');
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const toast = document.getElementById('toastMessage');
+            if (toast) {
+                toast.classList.remove('hidden');
+                setTimeout(() => {
+                    closeModal('rfqModal');
+                }, 2500);
+            }
+        }
+    </script>
+</body>
+</html>

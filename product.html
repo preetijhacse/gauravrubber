@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Products & Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0d0f14;
+    --surface: #141720;
+    --surface2: #1b1f2b;
+    --border: rgba(255,255,255,0.07);
+    --border-active: rgba(255,255,255,0.18);
+    --accent: #e8ff47;
+    --accent-dim: rgba(232,255,71,0.12);
+    --accent-dim2: rgba(232,255,71,0.06);
+    --text-primary: #f0f2f7;
+    --text-secondary: #8892a4;
+    --text-muted: #4a5264;
+    --font-display: 'Syne', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+    --radius: 12px;
+    --radius-sm: 7px;
+    --transition: 0.22s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* ─── SECTION WRAPPER ─── */
+  .solutions {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 24px 100px;
+  }
+
+  /* ─── SECTION HEADER ─── */
+  .solutions__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-display);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 18px;
+  }
+  .solutions__eyebrow::before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .solutions__heading {
+    font-family: var(--font-display);
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.1;
+    margin-bottom: 14px;
+  }
+
+  .solutions__heading span {
+    color: var(--accent);
+  }
+
+  .solutions__sub {
+    font-size: 16px;
+    color: var(--text-secondary);
+    max-width: 520px;
+    margin-bottom: 64px;
+    line-height: 1.7;
+  }
+
+  /* ─── CATEGORY GRID ─── */
+  .cat-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: 2px;
+  }
+
+  @media (max-width: 900px) {
+    .cat-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .cat-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 380px) {
+    .cat-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  .cat-btn {
+    background: var(--surface);
+    border: none;
+    border-right: 1px solid var(--border);
+    padding: 20px 12px 18px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    transition: background var(--transition), color var(--transition);
+    position: relative;
+    outline: none;
+  }
+  .cat-btn:last-child { border-right: none; }
+  .cat-btn:focus-visible { box-shadow: inset 0 0 0 2px var(--accent); }
+
+  .cat-btn.active {
+    background: var(--accent-dim);
+  }
+  .cat-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--accent);
+  }
+
+  .cat-btn__icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    transition: background var(--transition), border-color var(--transition);
+  }
+  .cat-btn.active .cat-btn__icon {
+    background: var(--accent-dim);
+    border-color: var(--accent);
+  }
+  .cat-btn__icon svg {
+    width: 18px;
+    height: 18px;
+    stroke: var(--text-secondary);
+    transition: stroke var(--transition);
+  }
+  .cat-btn.active .cat-btn__icon svg { stroke: var(--accent); }
+
+  .cat-btn__label {
+    font-family: var(--font-display);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-align: center;
+    color: var(--text-secondary);
+    line-height: 1.3;
+    transition: color var(--transition);
+  }
+  .cat-btn.active .cat-btn__label { color: var(--accent); }
+
+  /* ─── PANEL ─── */
+  .panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    display: none;
+  }
+  .panel.active { display: block; }
+
+  .panel__inner {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    min-height: 440px;
+  }
+
+  @media (max-width: 768px) {
+    .panel__inner { grid-template-columns: 1fr; }
+  }
+
+  /* ─── SIDEBAR TABS ─── */
+  .panel__sidebar {
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    padding: 12px 0;
+    background: var(--surface2);
+  }
+
+  @media (max-width: 768px) {
+    .panel__sidebar {
+      flex-direction: row;
+      flex-wrap: wrap;
+      border-right: none;
+      border-bottom: 1px solid var(--border);
+      padding: 0;
+      gap: 0;
+    }
+  }
+
+  .tab-btn {
+    background: none;
+    border: none;
+    padding: 13px 20px;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-secondary);
+    font-family: var(--font-body);
+    font-size: 13.5px;
+    font-weight: 400;
+    border-left: 2px solid transparent;
+    transition: all var(--transition);
+    outline: none;
+  }
+  .tab-btn:hover { color: var(--text-primary); background: rgba(255,255,255,0.03); }
+  .tab-btn.active {
+    color: var(--text-primary);
+    border-left-color: var(--accent);
+    background: var(--accent-dim2);
+    font-weight: 500;
+  }
+  .tab-btn__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--text-muted);
+    flex-shrink: 0;
+    transition: background var(--transition);
+  }
+  .tab-btn.active .tab-btn__dot { background: var(--accent); }
+
+  @media (max-width: 768px) {
+    .tab-btn {
+      border-left: none;
+      border-bottom: 2px solid transparent;
+      padding: 11px 14px;
+      font-size: 13px;
+      flex: 1 0 auto;
+      min-width: 130px;
+      justify-content: center;
+    }
+    .tab-btn.active { border-bottom-color: var(--accent); border-left-color: transparent; }
+    .tab-btn__dot { display: none; }
+  }
+
+  /* ─── CONTENT AREA ─── */
+  .panel__content {
+    padding: 40px 44px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  @media (max-width: 900px) { .panel__content { padding: 32px 28px; } }
+  @media (max-width: 600px) { .panel__content { padding: 24px 20px; } }
+
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeUp 0.3s ease both; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .tc__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-dim);
+    border: 1px solid rgba(232,255,71,0.25);
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-bottom: 18px;
+  }
+
+  .tc__title {
+    font-family: var(--font-display);
+    font-size: clamp(22px, 3.5vw, 30px);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 14px;
+    line-height: 1.15;
+  }
+
+  .tc__desc {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    max-width: 500px;
+    margin-bottom: 28px;
+  }
+
+  .tc__features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+
+  .tc__feat {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    padding: 5px 12px;
+    border-radius: 40px;
+    letter-spacing: 0.01em;
+  }
+
+  .tc__img-placeholder {
+    width: 100%;
+    max-width: 480px;
+    height: 200px;
+    background: var(--surface2);
+    border: 1px dashed var(--border-active);
+    border-radius: var(--radius);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: var(--text-muted);
+    font-size: 13px;
+  }
+  .tc__img-placeholder svg {
+    width: 32px;
+    height: 32px;
+    stroke: var(--text-muted);
+    opacity: 0.6;
+  }
+
+  /* ─── BOTTOM STRIP ─── */
+  .solutions__strip {
+    margin-top: 60px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+
+  @media (max-width: 600px) { .solutions__strip { grid-template-columns: 1fr; } }
+
+  .strip-item {
+    background: var(--surface);
+    padding: 28px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .strip-item__num {
+    font-family: var(--font-display);
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  .strip-item__label {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.4;
+  }
+</style>
+</head>
+<body>
+
+<section class="solutions" aria-label="Products and solutions">
+
+  <span class="solutions__eyebrow">Our portfolio</span>
+  <h2 class="solutions__heading">Products &amp; <span>Solutions</span></h2>
+  <p class="solutions__sub">From material handling to Industry 5.0 — integrated automation solutions engineered for the factory floor of today and tomorrow.</p>
+
+  <!-- CATEGORY SWITCHER -->
+  <div class="cat-grid" role="tablist" aria-label="Solution categories">
+    <button class="cat-btn active" role="tab" aria-selected="true"  aria-controls="panel-material"  data-panel="material">
+      <span class="cat-btn__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+      </span>
+      <span class="cat-btn__label">Material<br>Handling</span>
+    </button>
+    <button class="cat-btn" role="tab" aria-selected="false" aria-controls="panel-industrial" data-panel="industrial">
+      <span class="cat-btn__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      </span>
+      <span class="cat-btn__label">Industrial<br>Automation</span>
+    </button>
+    <button class="cat-btn" role="tab" aria-selected="false" aria-controls="panel-robotics"  data-panel="robotics">
+      <span class="cat-btn__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="11" width="10" height="10" rx="2"/><path d="M12 11V7a3 3 0 0 1 3-3h0"/><circle cx="9" cy="7" r="1"/><path d="M7 15H5a2 2 0 0 1-2-2v-1"/><path d="M17 15h2a2 2 0 0 0 2-2v-1"/></svg>
+      </span>
+      <span class="cat-btn__label">Robotics</span>
+    </button>
+    <button class="cat-btn" role="tab" aria-selected="false" aria-controls="panel-i50"      data-panel="i50">
+      <span class="cat-btn__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20M12 2a14.5 14.5 0 0 1 0 20M2 12h20"/></svg>
+      </span>
+      <span class="cat-btn__label">Industry<br>5.0</span>
+    </button>
+    <button class="cat-btn" role="tab" aria-selected="false" aria-controls="panel-services"  data-panel="services">
+      <span class="cat-btn__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+      </span>
+      <span class="cat-btn__label">Services</span>
+    </button>
+  </div>
+
+  <!-- ═══════════════════════════ PANEL: MATERIAL HANDLING ═════════════════════════ -->
+  <div class="panel active" id="panel-material" role="tabpanel">
+    <div class="panel__inner">
+      <nav class="panel__sidebar" aria-label="Material handling sub-categories">
+        <button class="tab-btn active" data-tab="mat-1"><span class="tab-btn__dot"></span>Palletizing</button>
+        <button class="tab-btn"        data-tab="mat-2"><span class="tab-btn__dot"></span>Conveyor &amp; Transfer Systems</button>
+        <button class="tab-btn"        data-tab="mat-3"><span class="tab-btn__dot"></span>Sorting</button>
+        <button class="tab-btn"        data-tab="mat-4"><span class="tab-btn__dot"></span>Auto Case Filling</button>
+      </nav>
+      <div class="panel__content">
+
+        <div class="tab-content active" id="mat-1">
+          <span class="tc__badge">Material Handling</span>
+          <h3 class="tc__title">Palletizing</h3>
+          <p class="tc__desc">Automated end-of-line palletizing systems that form precise stack patterns, maximise load stability, and eliminate manual lifting — boosting throughput without adding headcount.</p>
+          <div class="tc__features">
+            <span class="tc__feat">Layer pattern programming</span>
+            <span class="tc__feat">Mixed-SKU capability</span>
+            <span class="tc__feat">High-speed cycle times</span>
+            <span class="tc__feat">Stretch wrap integration</span>
+          </div>
+          <div class="tc__img-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            <span>Palletizing system image</span>
+          </div>
+        </div>
+
+        <div class="tab-content" id="mat-2">
+          <span class="tc__badge">Material Handling</span>
+          <h3 class="tc__title">Conveyor &amp; Transfer Systems</h3>
+          <p class="tc__desc">Integrated flat belt, roller, and transfer conveyor networks that connect every workstation — configurable for flat, inclined, curved, and accumulating flows with variable-speed drives.</p>
+          <div class="tc__features">
+            <span class="tc__feat">Belt &amp; roller variants</span>
+            <span class="tc__feat">90° transfer units</span>
+            <span class="tc__feat">Variable speed drives</span>
+            <span class="tc__feat">Accumulation zones</span>
+          </div>
+          <div class="tc__img-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            <span>Conveyor system image</span>
+          </div>
+        </div>
+
+        <div class="tab-content" id="mat-3">
+          <span class="tc__badge">Material Handling</span>
+          <h3 class="tc__title">Sorting</h3>
+          <p class="tc__desc">High-speed inline sorting with vision sensors, barcode scanners, and diverters — routes products accurately by SKU, weight, size, or destination code at production speed.</p>
+          <div class="tc__features">
+            <span class="tc__feat">Vision-based routing</span>
+            <span class="tc__feat">Barcode / RFID trigger</span>
+            <span class="tc__feat">Multi-lane diverters</span>
+            <span class="tc__feat">Reject &amp; quarantine</span>
+          </div>
+          <div class="tc__img-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            <span>Sorting system image</span>
+          </div>
+        </div>
+
+        <div class="tab-content" id="mat-4">
+          <span class="tc__badge">Material Handling</span>
+          <h3 class="tc__title">Auto Case Filling</h3>
+          <p class="tc__desc">Automated case packing and filling stations that handle diverse product types — maintaining consistent fill rates, reducing giveaway, and eliminating manual effort on the packing line.</p>
+          <div class="tc__features">
+            <span class="tc__feat">Erect-fill-seal sequence</span>
+            <span class="tc__feat">Weight / count control</span>
+            <span class="tc__feat">Format changeover</span>
+            <span class="tc__feat">Reject detection</span>
+          </div>
+          <div class="tc__img-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+            <span>Auto case filling image</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════ PANEL: INDUSTRIAL AUTOMATION ═════════════════════ -->
+  <div class="panel" id="panel-industrial" role="tabpanel">
+    <div class="panel__inner">
+      <nav class="panel__sidebar">
+        <button class="tab-btn active" data-tab="ind-1"><span class="tab-btn__dot"></span>Machine Tending</button>
+        <button class="tab-btn"        data-tab="ind-2"><span class="tab-btn__dot"></span>Pick &amp; Place</button>
+        <button class="tab-btn"        data-tab="ind-3"><span class="tab-btn__dot"></span>Low-Cost Automation</button>
+        <button class="tab-btn"        data-tab="ind-4"><span class="tab-btn__dot"></span>Poka Yoke</button>
+      </nav>
+      <div class="panel__content">
+
+        <div class="tab-content active" id="ind-1">
+          <span class="tc__badge">Industrial Automation</span>
+          <h3 class="tc__title">Machine Tending</h3>
+          <p class="tc__desc">Robotic cells that load and unload CNC machines, injection moulding presses, and stamping equipment — enabling lights-out production and removing operators from hazardous environments.</p>
+          <div class="tc__features">
+            <span class="tc__feat">CNC &amp; IMM compatible</span>
+            <span class="tc__feat">Lights-out operation</span>
+            <span class="tc__feat">Multi-machine tending</span>
+            <span class="tc__feat">Vision-guided gripper</span>
+          </div>
+          <div class="tc__img-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            <span>Machine tending image</span>
+          </div>
+        </div>
+
+        <div class="tab-content" id="ind-2">
+          <span class="tc__badge">Industrial Automation</span>
+          <h3 class="tc__title">Pick &amp; Place</h3>
+          <p class="tc__desc">Fast, flexible pick &amp; place systems for component handling, assembly, and packaging — configurable for varying geometries with interchangeable end-of-arm tooling.</p>
+          <div class="tc__features">
+            <span class="tc__feat">Delta &amp; SCARA robots</span>
+            <span class="tc__feat">Vision-guided picking</span>
+            <span class="tc__feat">Multi-product EOAT</span>
+            <span class="tc__feat">Cycle times &lt;0.5s</span>
+          </div>
+          <div class="tc__img-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v0M14 10V4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v2M10 10.5V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v8"/><path d="M18 11a2 2 0 1 1 4 0v3a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg>
+            <span>Pick &amp; place image</span>
+          </div>
+        </div>
+
+        <div class="tab-content" id="ind-3">
+          <span class="tc__badge">Industrial Automation</span>
+          <h3 class="tc__title">Low-Cost Automation</h3>
+          <p class="tc__desc">Practical, budget-friendly automation modules designed for SMEs — delivering quick ROI through modular, scalable solutions that don't require complex infrastructure or large capital outlay.</p>
+          <div class="tc__features">
+            <span class="tc__feat">Rapid deployment</span>
+            <span class="tc__feat">Modular design</span>
+            <span class="tc__feat">Low capex</span>
+            <span class="tc__feat">SME-focused ROI</span>
+          </div>
+          <div class="tc__img-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            <span>Low-cost automation image</span>
+          </div>
+        </div>
+
+        <div class="tab-content" id="ind-4">
+          <span class="tc__badge">Industrial Automation</span>
+          <h3 class="tc__title">Poka Yoke</h3>
+          <p class="tc__desc">Error-proofing assemblies and devices that prevent defects at source — combining vision sensors, limit switches, and guided fixtures to achieve zero-defect manufacturing.</p>
+          <div class="tc__features">
+            <span class="tc__feat">Vision sensors</span>
+            <span class="tc__feat">Limit switch interlocks</span>
+            <span class="tc__feat">Guided assembly jigs</span>
+            <span class="tc__feat">Go/no-go indication</span>
+          </div>
+          <div class="tc__img-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span>Poka Yoke image</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════ PANEL: ROBOTICS ══════════════════════════════════ -->
+  <div class="panel" id="panel-robotics" role="tabpanel">
+    <div class="panel__inner">
+      <nav class="panel__sidebar">
+        <button class="tab-btn active" data-tab="rob-1"><span class="tab-btn__dot"></span>Collaborative Robots</button>
+        <button class="tab-btn"        data-tab="rob-2"><span class="tab-btn__dot"></span>Industrial Robots</button>
+        <button class="tab-btn"        data-tab="rob-3"><span class="tab-btn__dot"></span>Cartesian Robots</button>
+        <button class="tab-btn"        data-tab="rob-4"><span class="tab-btn__dot"></span>SCARA Robots</button>
+        <button class="tab-btn"        data-tab="rob-5"><span class="tab-btn__dot"></span>IAI Robo Cylinders</button>
+      </nav>
+      <div class="panel__content">
+
+        <div class="tab-content active" id="rob-1">
+          <span class="tc__badge">Universal Robots</span>
+          <h3 class="tc__title">Collaborative Robots</h3>
+          <p class="tc__desc">Universal Robots cobots designed to work safely alongside humans — inherently safe, easy to program with drag-and-drop teach, and flexible enough to redeploy across tasks within hours.</p>
+          <div class="tc__features">
+            <span class="tc__feat">UR3e · UR5e · UR10e · UR16e</span>
+            <span class="tc__feat">No safety fencing needed</span>
+            <span class="tc__feat">PolyScope programming</span>
+            <span class="tc__feat">±0.03mm repeatability</span>
+          </div>
+          <div class="tc__img-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg>
+            <span>Collaborative robot image (Universal Robots)</span>
+          </div>
+        </div>
+
+        <div class="tab-content" id="rob-2">
+          <span class="tc__badge">Fanuc · Mitsubishi</span>
+          <h3 class="tc__title">Industrial Robots</h3>
+          <p class="tc__desc">High-payload, high-speed 6-axis industrial robots from Fanuc and Mitsubishi — built for demanding welding, material handling, assembly, and machine tending applications 24/7.</p>
+          <div class="tc__features">
+            <span class="tc__feat">Up to 2300kg payload</span>
+            <span class="tc__feat">Arc &amp; spot welding</span>
+            <span class="tc__feat">IP67 rated variants</span>
+            <span class="tc__feat">Fanuc &amp; Mitsubishi range</span>
+          </div>
+          <div class="tc__img-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+            <span>Industrial robot image (Fanuc or Mitsubishi)</span>
+          </div>
+        </div>
+
+        <div class="tab-content" id="rob-3">
+          <span class="tc__badge">IAI</span>
+          <h3 class="tc__title">Cartesian Robots</h3>
+          <p class="tc__desc">IAI Cartesian multi-axis linear motion systems offering precise, repeatable positioning for pick &amp; place, dispensing, soldering, and inspection tasks in compact footprints.</p>
+          <div class="tc__features">
+            <span class="tc__feat">2 to 4-axis configurations</span>
+            <span class="tc__feat">±0.01mm repeatability</span>
+            <span class="tc__feat">Clean-room variants</span>
+            <span class="tc__feat">ROBO Cylinder actuators</span>
+          </div>
+          <div class="tc__img-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 17 13.5 8.5 8.5 13.5 2 7"/><polyline points="16 17 22 17 22 11"/></svg>
+            <span>Cartesian robot image (IAI)</span>
+          </div>
+        </div>
+
+        <div class="tab-content" id="rob-4">
+          <span class="tc__badge">Mitsubishi</span>
+          <h3 class="tc__title">SCARA Robots</h3>
+          <p class="tc__desc">Mitsubishi SCARA robots optimised for high-speed, precise horizontal assembly and small-part handling — ideal for electronics, pharmaceuticals, and PCB assembly.</p>
+          <div class="tc__features">
+            <span class="tc__feat">Cycle time &lt;0.29s</span>
+            <span class="tc__feat">±0.01mm repeatability</span>
+            <span class="tc__feat">1–20kg payload range</span>
+            <span class="tc__feat">Compact arm reach</span>
+          </div>
+          <div class="tc__img-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
+            <span>SCARA robot image (Mitsubishi)</span>
+          </div>
+        </div>
+
+        <div class="tab-content" id="rob-5">
+          <span class="tc__badge">IAI</span>
+          <h3 class="tc__title">IAI Robo Cylinders</h3>
+          <p class="tc__desc">Electric actuators that replace pneumatic cylinders with fully programmable stroke, speed, and force — delivering quiet, clean, energy-efficient linear motion for any production environment.</p>
+          <div class="tc__features">
+            <span class="tc__feat">Replaces pneumatic</span>
+            <span class="tc__feat">Programmable force</span>
+            <span class="tc__feat">Energy efficient</span>
+            <span class="tc__feat">200+ model variants</span>
+          </div>
+          <div class="tc__img-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h3M16 3h3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-3"/><path d="M12 8v8M8 12h8"/></svg>
+            <span>IAI Robo Cylinder image</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════ PANEL: INDUSTRY 5.0 ══════════════════════════════ -->
+  <div class="panel" id="panel-i50" role="tabpanel">
+    <div class="panel__inner">
+      <nav class="panel__sidebar">
+        <button class="tab-btn active" data-tab="i5-1"><span class="tab-btn__dot"></span>Smart Manufacturing</button>
+        <button class="tab-btn"        data-tab="i5-2"><span class="tab-btn__dot"></span>Vision &amp; Barcode</button>
+        <button class="tab-btn"        data-tab="i5-3"><span class="tab-btn__dot"></span>IIoT</button>
+        <button class="tab-btn"        data-tab="i5-4"><span class="tab-btn__dot"></span>IT &amp; OT Integration</button>
+      </nav>
+      <div class="panel__content">
+
+        <div class="tab-content active" id="i5-1">
+          <span class="tc__badge">Industry 5.0</span>
+          <h3 class="tc__title">Smart Manufacturing</h3>
+          <p class="tc__desc">End-to-end smart factory solutions — MES, real-time OEE dashboards, predictive analytics, and digital twin integration that align the factory floor with Industry 5.0 human-centric principles.</p>
+          <div class="tc__features">
+            <span class="tc__feat">MES &amp; SCADA</span>
+            <span class="tc__feat">OEE dashboards</span>
+            <span class="tc__feat">Digital twin</span>
+            <span class="tc__feat">Predictive analytics</span>
+          </div>
+          <div class="tc__img-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            <span>Smart manufacturing image</span>
+          </div>
+        </div>
+
+        <div class="tab-content" id="i5-2">
+          <span class="tc__badge">Industry 5.0</span>
+          <h3 class="tc__title">Vision &amp; Barcode</h3>
+          <p class="tc__desc">Machine vision and barcode reading systems for inline inspection, label verification, dimensional measurement, and full traceability — from 1D barcodes to 2D matrix codes.</p>
+          <div class="tc__features">
+            <span class="tc__feat">2D / 3D vision</span>
+            <span class="tc__feat">1D &amp; 2D codes</span>
+            <span class="tc__feat">Label verification</span>
+            <span class="tc__feat">Defect detection</span>
+          </div>
+          <div class="tc__img-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+            <span>Vision &amp; barcode image</span>
+          </div>
+        </div>
+
+        <div class="tab-content" id="i5-3">
+          <span class="tc__badge">Industry 5.0</span>
+          <h3 class="tc__title">IIoT</h3>
+          <p class="tc__desc">Industrial IoT platforms connecting sensors, PLCs, and machines to the cloud — enabling real-time condition monitoring, predictive maintenance, and remote diagnostics across facilities.</p>
+          <div class="tc__features">
+            <span class="tc__feat">Edge computing</span>
+            <span class="tc__feat">MQTT / OPC-UA</span>
+            <span class="tc__feat">Cloud connectivity</span>
+            <span class="tc__feat">Predictive maintenance</span>
+          </div>
+          <div class="tc__img-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1"/></svg>
+            <span>IIoT image</span>
+          </div>
+        </div>
+
+        <div class="tab-content" id="i5-4">
+          <span class="tc__badge">Industry 5.0</span>
+          <h3 class="tc__title">IT &amp; OT Integration</h3>
+          <p class="tc__desc">Seamless integration of IT systems (ERP, MES, cloud) with OT assets (PLCs, SCADA, sensors) — creating a unified data layer from shop floor to top floor for real-time operational visibility.</p>
+          <div class="tc__features">
+            <span class="tc__feat">ERP ↔ SCADA bridge</span>
+            <span class="tc__feat">Unified namespace</span>
+            <span class="tc__feat">Secure segmentation</span>
+            <span class="tc__feat">SAP / Oracle ready</span>
+          </div>
+          <div class="tc__img-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="9" height="9" rx="1"/><rect x="13" y="2" width="9" height="9" rx="1"/><rect x="2" y="13" width="9" height="9" rx="1"/><rect x="13" y="13" width="9" height="9" rx="1"/></svg>
+            <span>IT &amp; OT integration image</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════ PANEL: SERVICES ══════════════════════════════════ -->
+  <div class="panel" id="panel-services" role="tabpanel">
+    <div class="panel__inner">
+      <nav class="panel__sidebar">
+        <button class="tab-btn active" data-tab="svc-1"><span class="tab-btn__dot"></span>Training Kit</button>
+        <button class="tab-btn"        data-tab="svc-2"><span class="tab-btn__dot"></span>Paid POC</button>
+      </nav>
+      <div class="panel__content">
+
+        <div class="tab-content active" id="svc-1">
+          <span class="tc__badge">Services</span>
+          <h3 class="tc__title">Training Kit</h3>
+          <p class="tc__desc">Hands-on automation and robotics training kits — structured modules that upskill engineers and technicians using live equipment, real PLC programs, and guided exercises aligned to industry standards.</p>
+          <div class="tc__features">
+            <span class="tc__feat">Live hardware labs</span>
+            <span class="tc__feat">PLC &amp; HMI training</span>
+            <span class="tc__feat">Robot programming</span>
+            <span class="tc__feat">Certification track</span>
+          </div>
+          <div class="tc__img-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            <span>Training kit image</span>
+          </div>
+        </div>
+
+        <div class="tab-content" id="svc-2">
+          <span class="tc__badge">Services</span>
+          <h3 class="tc__title">Paid POC</h3>
+          <p class="tc__desc">Structured Proof of Concept engagements — we validate your automation idea with real hardware, defined KPIs, and measurable outcomes before committing to full-scale deployment.</p>
+          <div class="tc__features">
+            <span class="tc__feat">Defined scope &amp; KPIs</span>
+            <span class="tc__feat">Real hardware trials</span>
+            <span class="tc__feat">Feasibility report</span>
+            <span class="tc__feat">Low risk entry point</span>
+          </div>
+          <div class="tc__img-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v11m0 0h10m-10 0-3.5 3.5M19 14l3.5 3.5M3 7h18"/></svg>
+            <span>Paid POC image</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- BOTTOM STATS STRIP -->
+  <div class="solutions__strip" aria-label="Key statistics">
+    <div class="strip-item">
+      <span class="strip-item__num">200+</span>
+      <span class="strip-item__label">Projects delivered across manufacturing sectors</span>
+    </div>
+    <div class="strip-item">
+      <span class="strip-item__num">5</span>
+      <span class="strip-item__label">Solution verticals under one roof</span>
+    </div>
+    <div class="strip-item">
+      <span class="strip-item__num">15+</span>
+      <span class="strip-item__label">Years of industrial automation expertise</span>
+    </div>
+  </div>
+
+</section>
+
+<script>
+(function () {
+  // Category switcher
+  const catBtns = document.querySelectorAll('.cat-btn');
+  const panels  = document.querySelectorAll('.panel');
+
+  catBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.dataset.panel;
+      catBtns.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
+      panels.forEach(p  =>  p.classList.remove('active'));
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected','true');
+      const panel = document.getElementById('panel-' + target);
+      if (panel) {
+        panel.classList.add('active');
+        // activate first tab inside
+        const firstTab = panel.querySelector('.tab-btn');
+        if (firstTab) firstTab.click();
+      }
+    });
+  });
+
+  // Sidebar tab switcher (event delegation on each panel)
+  panels.forEach(panel => {
+    const sidebar  = panel.querySelector('.panel__sidebar');
+    const contents = panel.querySelectorAll('.tab-content');
+    const tabBtns  = panel.querySelectorAll('.tab-btn');
+
+    sidebar.addEventListener('click', e => {
+      const btn = e.target.closest('.tab-btn');
+      if (!btn) return;
+      const tabId = btn.dataset.tab;
+      tabBtns.forEach(b => b.classList.remove('active'));
+      contents.forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+      const tc = document.getElementById(tabId);
+      if (tc) tc.classList.add('active');
+    });
+  });
+})();
+</script>
+</body>
+</html>
